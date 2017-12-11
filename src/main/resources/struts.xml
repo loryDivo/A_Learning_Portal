@@ -11,12 +11,16 @@
         <action name="index">
             <result>/index.jsp</result>
         </action>
-        
-        <action name="login" class="com.assignment3.actions.LoginAction">
-        		<result name="admin">/welcome_admin.jsp</result>
-        		<result name="user">/welcome_user.jsp</result>
-        		<result name="input">/login.jsp</result>
-        		<result name="error">/login.jsp</result>
+    </package>
+    
+    <include file="login.xml"></include>
+    
+    <package name="welcome" extends="struts-default">
+        <action name="welcome-admin" class="com.assignment3.actions.WelcomeAdmin">
+            <result name="success">/welcome_admin.jsp</result>
+        </action>
+        <action name="welcome-user" class="com.assignment3.actions.WelcomeUser">
+            <result name="success">/welcome_user.jsp</result>
         </action>
     </package>
 

@@ -10,6 +10,10 @@ public class User {
 	private String city;
 	private String country;
 	
+	public User(String username) {
+		setUsername(username);
+	}
+	
 	public String getUsername() {
 		return username;
 	}

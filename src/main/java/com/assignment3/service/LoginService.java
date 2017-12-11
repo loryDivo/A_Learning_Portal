@@ -9,11 +9,6 @@ public class LoginService {
 	private String username;
 	private String password;
 	
-	public LoginService(String username, String password) {
-		setUsername(username);
-		setPassword(password);
-	}
-	
 	public String getUsername() {
 		return username;
 	}
@@ -27,13 +22,17 @@ public class LoginService {
 		this.password = password;
 	}
 	
-	public int authenticate() {
-		if(getUsername().equals("admin") && getPassword().equals("admin")) {
+	public int authenticate(String username, String password) {
+		if(username.equals("admin") && password.equals("admin")) {
 			return IS_ADMIN;
-		} else if(getUsername().equals("user") && getPassword().equals("user")) {
+		} else if(username.equals("user") && password.equals("user")) {
 			return IS_USER;
 		}
 		
 		return WRONG_CREDENTIALS;
+	}
+	
+	public void logout() {
+		//cancel the session of the authenticated user
 	}
 }

@@ -1,9 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <t:layout>
-	<jsp:attribute name="title">| Reserved Area user</jsp:attribute>
+	<jsp:attribute name="title">| Reserved Area User</jsp:attribute>
     <jsp:body>
-        <p>user</p><br/>
+        <p>SUer
+        		<s:property value="%{user.username}"></s:property>
+        </p><br/>
     </jsp:body>
 </t:layout>

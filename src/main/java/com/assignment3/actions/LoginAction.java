@@ -1,9 +1,8 @@
 package com.assignment3.actions;
 
 import com.assignment3.service.LoginService;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends BaseAction {
 	
 	private String username;
 	private String password;
@@ -13,12 +12,12 @@ public class LoginAction extends ActionSupport {
 	}
 	
 	public String execute() {
-		LoginService service = new LoginService(username, password);
-		int result = service.authenticate();
+		LoginService service = new LoginService();
+		int result = service.authenticate(username, password);
 		if(result == LoginService.IS_ADMIN) return "admin";
 		else if(result == LoginService.IS_USER) return "user";
 		
-		return ERROR;
+		return LOGIN;
 	}
 
 	public String getUsername() {
@@ -36,6 +35,5 @@ public class LoginAction extends ActionSupport {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	
 }
