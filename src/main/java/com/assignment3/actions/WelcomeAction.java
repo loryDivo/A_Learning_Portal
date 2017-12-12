@@ -9,29 +9,27 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<User> userList;
-	private ArrayList<Course> courseList;
-	
-	public ArrayList<Course> getCourseList() {
-		return courseList;
-	}
-
-	public ArrayList<User> getUserList() {
-		return userList;
-	}
-
-	public void setUserList(ArrayList<User> userList) {
-		this.userList = userList;
-	}
-	
-	public void setCourseList(ArrayList<Course> courseList) {
-		this.courseList = courseList;
-	}
+	private ArrayList<User> users;
+	private ArrayList<Course> courses;
 	
 	public String execute() {
-		user = new User("username", "password", "name","lastname", "email@email.it");
-		setCourseList(user.getAllCourse());
-		setUserList(user.getAllUser());
+		setUsers(User.getAll());
+		setCourses(Course.getAll());
 		return SUCCESS;
 	}
+	
+	
+	public ArrayList<User> getUsers() {
+		return users;
+	}
+	public void setUsers(ArrayList<User> users) {
+		this.users = users;
+	}
+	public ArrayList<Course> getCourses() {
+		return courses;
+	}
+	public void setCourses(ArrayList<Course> courses) {
+		this.courses = courses;
+	}
+	
 }

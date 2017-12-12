@@ -2,7 +2,7 @@
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <%@ attribute name="title" fragment="true" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
+<%@taglib prefix="layout" tagdir="/WEB-INF/tags/partials/layout" %>
 
 <html>
   <head>

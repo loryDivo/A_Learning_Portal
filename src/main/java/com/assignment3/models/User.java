@@ -13,10 +13,8 @@ public class User {
 	private String email;
 	private String city;
 	private String country;
-	
-	private ArrayList<Course> courseList = new ArrayList<Course>();
-	
-	private ArrayList<User> userList = new ArrayList<User>();
+
+	private ArrayList<Course> courses = new ArrayList<Course>();
 	
 	public User(String username, String password, String name, String last_name, String email) {
 		setUsername(username);
@@ -80,6 +78,18 @@ public class User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	public ArrayList<Course> getCourses() {
+		courses = new ArrayList<Course>();
+		for(int i = 0; i < 10; i++) {
+			Course course = new Course("course"+i);
+			course.setCFU(10);
+			courses.add(course);
+		}
+		return courses;
+	}
+	public void setCourses(ArrayList<Course> courses) {
+		this.courses = courses;
+	}
 	
 	public Integer save() {
 		return 2;
@@ -93,20 +103,13 @@ public class User {
 		return user;
 	}
 
-	public ArrayList<User> getAllUser(){
+	public static ArrayList<User> getAll() {
+		ArrayList<User> ret = new ArrayList<User>();
 		for(int i = 0; i < 10; i++) {
 			User user = new User("user"+i, "password"+i, "name"+i, "surname"+i, "email@email"+i+".it");
-			userList.add(user);
+			ret.add(user);
 		}
-		return userList;
+		return ret;
 	}
 	
-	public ArrayList<Course> getAllCourse(){
-		for(int i = 0; i < 10; i++) {
-			Course course = new Course("corso"+i);
-			course.setCFU(10);
-			courseList.add(course);
-		}
-		return courseList;
-	}
 }

@@ -1,5 +1,5 @@
 <%@ tag description="Overall Page template" pageEncoding="UTF-8"%>
-<%@taglib prefix="navbar" tagdir="/WEB-INF/tags/layout/navbar" %>
+<%@taglib prefix="navbar" tagdir="/WEB-INF/tags/partials/layout/navbar" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 

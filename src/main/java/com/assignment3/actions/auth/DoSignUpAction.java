@@ -1,7 +1,5 @@
 package com.assignment3.actions.auth;
 
-import java.util.Map;
-
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.assignment3.actions.BaseAction;
@@ -11,6 +9,7 @@ import com.assignment3.service.SignUpService;
 
 public class DoSignUpAction extends BaseAction implements SessionAware {
 	
+	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
 	private String password_confirm;
