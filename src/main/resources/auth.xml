@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    
+    <package name="login" extends="default">
+        <action name="login" class="com.assignment3.actions.auth.LoginAction">
+        		<result name="success">/login.jsp</result>
+        </action>
+        
+        <action name="doLogin" class="com.assignment3.actions.auth.DoLoginAction">
+        		<result name="success" type="redirectAction">
+        			<param name="actionName">welcome</param>
+        			<param name="namespace">/</param>
+        		</result>
+        		<result name="input">/login.jsp</result>
+        		<result name="error">/login.jsp</result>
+        </action>
+        
+        <action name="logout" class="com.assignment3.actions.auth.LogoutAction">
+        		<result name="success" type="redirectAction">
+		        <param name="actionName">login</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+    </package>
+    
+    <package name="signUp" extends="default">
+        <action name="sign-up" class="com.assignment3.actions.auth.SignUpAction">
+            <result name="success">/sign_up.jsp</result>
+        </action>
+        
+        <action name="doSignUp" class="com.assignment3.actions.auth.DoSignUpAction">
+        		<result name="success" type="redirectAction">
+        			<param name="actionName">sign-up-completed</param>
+        			<param name="namespace">/</param>
+        		</result>
+            <result name="input">/sign_up.jsp</result>
+            <result name="error" type="redirectAction">
+        			<param name="actionName">sign-up-error</param>
+        			<param name="namespace">/</param>
+        		</result>
+        </action>
+        
+        <action name="sign-up-completed" class="com.assignment3.actions.auth.SignUpCompletedAction">
+            <result name="success">/sign_up_completed.jsp</result>
+        </action>
+        <action name="sign-up-error" class="com.assignment3.actions.auth.SignUpErrorAction">
+            <result name="success">/sign_up_error.jsp</result>
+        </action>
+    </package>
+    
+    
+
+</struts>

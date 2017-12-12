@@ -7,6 +7,7 @@
     <jsp:body>
         <p>
         		<s:property value="%{user.username}"></s:property>
+        		<s:property value="%{user.admin}"></s:property>
         </p><br/>
     </jsp:body>
 </t:layout>

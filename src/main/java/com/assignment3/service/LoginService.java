@@ -1,38 +1,22 @@
 package com.assignment3.service;
 
+import java.util.Map;
+
 public class LoginService {
 	
-	public static final int IS_ADMIN = 0;
-	public static final int IS_USER = 1;
-	public static final int WRONG_CREDENTIALS = 2;
-	
-	private String username;
-	private String password;
-	
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public int authenticate(String username, String password) {
-		if(username.equals("admin") && password.equals("admin")) {
-			return IS_ADMIN;
-		} else if(username.equals("user") && password.equals("user")) {
-			return IS_USER;
-		}
+	public static Integer authenticate(String username, String password) {
+		if(username.equals("admin") && password.equals("admin")) return 1;
+		else if(username.equals("user") && password.equals("user")) return 2;
 		
-		return WRONG_CREDENTIALS;
+		
+		return null;
 	}
 	
-	public void logout() {
-		//cancel the session of the authenticated user
+	public static void saveUserIntoSession(Integer id, Map<String, Object> session) {
+		session.put("userId", (Integer)id);
+	}
+	
+	public static void logout(Map<String, Object> session) {
+		session.put("userId", null);
 	}
 }

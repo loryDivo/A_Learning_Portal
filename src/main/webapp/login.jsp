@@ -5,7 +5,7 @@
 <t:layout>
 	<jsp:attribute name="title">| Login</jsp:attribute>
     <jsp:body>
-        <s:form action="login" enctype="multipart/form-data" theme="bootstrap" label="Login">
+        <s:form action="doLogin" enctype="multipart/form-data" theme="bootstrap" label="Login">
                 <s:textfield label="Username" name="username"/>
 
                 <s:password label="Password" name="password"/>

@@ -2,18 +2,30 @@ package com.assignment3.models;
 
 public class User {
 	
+	private Integer id;
 	private String username;
 	private String password;
+	private boolean admin;
 	private String name;
 	private String last_name;
 	private String email;
 	private String city;
 	private String country;
 	
-	public User(String username) {
+	public User(String username, String password, String name, String last_name, String email) {
 		setUsername(username);
+		setPassword(password);
+		setName(name);
+		setLast_name(last_name);
+		setEmail(email);
 	}
 	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -25,6 +37,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 	public String getName() {
 		return name;
@@ -57,5 +75,17 @@ public class User {
 		this.country = country;
 	}
 	
+	public Integer save() {
+		return 2;
+	}
+	
+	public static User findByid(int id) {
+		User user = new User("username", "password", "name", "last name", "email@email.com");
+		if(id == 1) user.setAdmin(true);
+		else user.setAdmin(false);
+		
+		return user;
+	}
+
 	
 }

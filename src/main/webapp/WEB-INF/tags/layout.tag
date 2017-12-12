@@ -19,6 +19,7 @@
 	    <div id="body">
 	    
 	      <s:actionerror theme="bootstrap"/>
+	      <s:fielderror theme="bootstrap"/>
 	      
 	      <div class="container">      
 	        <jsp:doBody/>

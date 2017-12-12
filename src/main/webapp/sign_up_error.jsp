@@ -3,10 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <t:layout>
-	<jsp:attribute name="title">| Reserved Area User</jsp:attribute>
+	<jsp:attribute name="title">| Sign Up Error</jsp:attribute>
     <jsp:body>
-        <p>SUer
-        		<s:property value="%{user.username}"></s:property>
-        </p><br/>
+        <p>Errore</p>
     </jsp:body>
 </t:layout>
