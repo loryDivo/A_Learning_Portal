@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.assignment3.models.Course;
 import com.assignment3.models.User;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -14,7 +15,8 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	
 	protected Map<String, Object> session;
 	protected User user;
-
+	protected Course course;
+	
 	public User getUser() {
 		return user;
 	}

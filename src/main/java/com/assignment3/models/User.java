@@ -1,5 +1,7 @@
 package com.assignment3.models;
 
+import java.util.ArrayList;
+
 public class User {
 	
 	private Integer id;
@@ -11,6 +13,10 @@ public class User {
 	private String email;
 	private String city;
 	private String country;
+	
+	private ArrayList<Course> courseList = new ArrayList<Course>();
+	
+	private ArrayList<User> userList = new ArrayList<User>();
 	
 	public User(String username, String password, String name, String last_name, String email) {
 		setUsername(username);
@@ -87,5 +93,20 @@ public class User {
 		return user;
 	}
 
+	public ArrayList<User> getAllUser(){
+		for(int i = 0; i < 10; i++) {
+			User user = new User("user"+i, "password"+i, "name"+i, "surname"+i, "email@email"+i+".it");
+			userList.add(user);
+		}
+		return userList;
+	}
 	
+	public ArrayList<Course> getAllCourse(){
+		for(int i = 0; i < 10; i++) {
+			Course course = new Course("corso"+i);
+			course.setCFU(10);
+			courseList.add(course);
+		}
+		return courseList;
+	}
 }
