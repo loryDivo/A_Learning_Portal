@@ -2,12 +2,18 @@ package com.assignment3.service;
 
 import java.util.Map;
 
+import com.assignment3.models.User;
+import com.assignment3.modelsDAO.UserDAO;
+
 public class LoginService {
 	
-	public static Integer authenticate(String username, String password) {
-		if(username.equals("admin") && password.equals("admin")) return 1;
-		else if(username.equals("user") && password.equals("user")) return 2;
-		
+	public static User authenticate(String username, String password) {
+		User user = UserDAO.find(1);
+		if(user != null) {
+			if(password.equals(user.getPassword())) {
+				return user;
+			}
+		}
 		
 		return null;
 	}

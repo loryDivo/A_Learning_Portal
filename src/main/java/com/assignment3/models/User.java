@@ -2,9 +2,19 @@ package com.assignment3.models;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="users")
 public class User {
 	
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private String username;
 	private String password;
 	private boolean admin;
@@ -16,6 +26,7 @@ public class User {
 
 	private ArrayList<Course> courses = new ArrayList<Course>();
 	
+	public User() {}
 	public User(String username, String password, String name, String last_name, String email) {
 		setUsername(username);
 		setPassword(password);
@@ -24,10 +35,10 @@ public class User {
 		setEmail(email);
 	}
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getUsername() {

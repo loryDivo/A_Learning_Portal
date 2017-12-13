@@ -2,6 +2,7 @@ package com.assignment3.actions.auth;
 
 import com.assignment3.actions.BaseAction;
 import com.assignment3.actions.NotLoggedIn;
+import com.assignment3.models.User;
 import com.assignment3.service.LoginService;
 
 public class DoLoginAction extends BaseAction implements NotLoggedIn {
@@ -16,11 +17,15 @@ public class DoLoginAction extends BaseAction implements NotLoggedIn {
 	}
 	
 	public String execute() {
-		Integer userId = LoginService.authenticate(username, password);
-		if(userId != null) {
-			LoginService.saveUserIntoSession(userId, session);
+		User user = LoginService.authenticate(getUsername(), getPassword());
+		
+		if(user != null) {
+			LoginService.saveUserIntoSession(user.getId(), session);
+			
 			return SUCCESS;
-		} else return ERROR;
+		}
+		
+		return ERROR;
 	}
 	
 	public String getUsername() {

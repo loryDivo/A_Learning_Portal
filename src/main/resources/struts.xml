@@ -6,7 +6,7 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     
-    <include file="default.xml"></include>
+    <include file="struts/default.xml"></include>
 
     <package name="assignment3" extends="default">
         <action name="index" class="com.assignment3.actions.IndexAction">
@@ -14,8 +14,8 @@
         </action>
     </package>
     
-    <include file="auth.xml"></include>
+    <include file="struts/auth.xml"></include>
     
-    <include file="user.xml"></include>
+    <include file="struts/user.xml"></include>
 
 </struts>

@@ -6,6 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
+import com.assignment3.models.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -30,8 +31,9 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	}
 
 	public void prepare() throws Exception {
-		if((Integer)session.get("userId") != null) {
-			User user = User.findByid((Integer)session.get("userId"));
+		Integer id = (Integer)session.get("userId");
+		if(id != null) {
+			User user = UserDAO.find(id);
 			
 			setUser(user);
 		}
