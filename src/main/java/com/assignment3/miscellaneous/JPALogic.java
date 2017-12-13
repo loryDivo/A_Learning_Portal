@@ -7,12 +7,22 @@ import javax.persistence.Query;
 
 public class JPALogic {
 	
+	public static JPALogic instance;
+	
 	private EntityManagerFactory emf;
     private EntityManager em;   
  
     public JPALogic() {
         emf = Persistence.createEntityManagerFactory("assignment3db");
         em = emf.createEntityManager();
+    }
+    
+    public static JPALogic getInstance() {
+    		if(instance == null) {
+    			instance = new JPALogic();
+    		}
+    		
+    		return instance;
     }
      
     public void jpaCreate(Object obj) {

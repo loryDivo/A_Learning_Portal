@@ -3,6 +3,7 @@ package com.assignment3.actions.auth;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.assignment3.actions.BaseAction;
+import com.assignment3.miscellaneous.HibernateDB;
 import com.assignment3.models.User;
 import com.assignment3.service.LoginService;
 import com.assignment3.service.SignUpService;
@@ -40,18 +41,20 @@ public class DoSignUpAction extends BaseAction implements SessionAware {
 	}
 	
 	public String execute() {
-		User user = new User(getUsername(), getPassword(), getName(), getLast_name(), getEmail());
-		Integer id = user.save();
-		
+		User user = SignUpService.createNewUser(getUsername(), getPassword(), getName(), getLast_name(), getEmail());
+		// TODO: try to get the f**ing id
+		user = HibernateDB.getInstance().findByField(User.class, "username", username);
+		boolean send = true;
 		//normally it would be required the email confirmation, but for this project the user will be signed up immediately
-		LoginService.saveUserIntoSession(id, session);
-		return SUCCESS;
+		/*if(SignUpService.sendEmail(user)) return true;
+		else return false;*/
 		
-		/*if(SignUpService.sendEmail(user)) return SUCCESS;
-		else return ERROR;*/
+		if(send) {
+			System.out.println("The id is asd: " + user.getId());
+			LoginService.saveUserIntoSession(user.getId(), session);
+			return SUCCESS;
+		} else return ERROR;
 	}
-	
-	
 	
 	public String getUsername() {
 		return username;

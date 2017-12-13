@@ -16,6 +16,8 @@
 		<property name="last_name" column="last_name" type="string" length="45" not-null="true" />
 		
 		<property name="email" column="email" type="string" length="45" not-null="true" />
+		
+		<property name="admin" column="admin" type="boolean" not-null="true" />
 
 	</class>
 </hibernate-mapping>

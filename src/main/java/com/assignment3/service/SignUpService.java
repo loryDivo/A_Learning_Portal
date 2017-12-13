@@ -3,6 +3,7 @@ package com.assignment3.service;
 import java.util.Random;
 
 import com.assignment3.miscellaneous.Emailer;
+import com.assignment3.miscellaneous.HibernateDB;
 import com.assignment3.models.User;
 
 public class SignUpService {
@@ -10,7 +11,7 @@ public class SignUpService {
 	private static final String subject = "Conferma Registrazione";
 	
 	public static boolean isUniqueUsername(String username) {
-		return true;
+		return HibernateDB.getInstance().findByField(User.class, "username", username) == null;
 	}
 	
 	public static boolean isStrongPassword(String password) {
@@ -22,7 +23,7 @@ public class SignUpService {
 	}
 	
 	public static boolean isUniqueEmail(String email) {
-		return true;
+		return HibernateDB.getInstance().findByField(User.class, "email", email) == null;
 	}
 	
 	public static boolean sendEmail(User user) {
@@ -40,5 +41,10 @@ public class SignUpService {
 		    sb.append(c);
 		}
 		return sb.toString();
+	}
+	
+	public static User createNewUser(String username, String password, String name, String last_name, String email) {
+		User user = new User(username, password, name, last_name, email);
+		return (User) HibernateDB.getInstance().save(user);
 	}
 }

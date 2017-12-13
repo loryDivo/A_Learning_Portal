@@ -1,19 +1,13 @@
 package com.assignment3.modelsDAO;
 
-
-import java.util.List;
-
 import com.assignment3.miscellaneous.JPALogic;
 import com.assignment3.models.User;
 
 public class UserDAO {
 
 	public static User find(int id) {
-		
-			JPALogic logJPA = new JPALogic();
-			
-			List<User> user = logJPA.jpaRead("select t from users where username  " + "t").getResultList(); 
-			return user.get(0);
+		return null;
+			//return (User) JPALogic.getInstance().jpaRead("SELECT t from users WHERE id = :id").getResultList().get(0);
 			/*Session session = null;
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("hibernate/hibernate.cfg.xml").build();
 

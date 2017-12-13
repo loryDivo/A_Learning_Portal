@@ -2,13 +2,13 @@ package com.assignment3.service;
 
 import java.util.Map;
 
+import com.assignment3.miscellaneous.HibernateDB;
 import com.assignment3.models.User;
-import com.assignment3.modelsDAO.UserDAO;
 
 public class LoginService {
 	
 	public static User authenticate(String username, String password) {
-		User user = UserDAO.find(1);
+		User user = HibernateDB.getInstance().findByField(User.class, "username", username);
 		if(user != null) {
 			if(password.equals(user.getPassword())) {
 				return user;

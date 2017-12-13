@@ -4,9 +4,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.assignment3.miscellaneous.HibernateDB;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
-import com.assignment3.models.UserDAO;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -33,7 +33,7 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	public void prepare() throws Exception {
 		Integer id = (Integer)session.get("userId");
 		if(id != null) {
-			User user = UserDAO.find(id);
+			User user = HibernateDB.getInstance().find(User.class, id);
 			
 			setUser(user);
 		}
