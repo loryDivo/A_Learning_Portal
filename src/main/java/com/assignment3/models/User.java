@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Column;
 
 @Entity
 @Table(name="users")
@@ -16,13 +17,21 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(name="username")
 	private String username;
+	@Column(name="password")
 	private String password;
+	@Column(name="admin")
 	private boolean admin;
+	@Column(name="name")
 	private String name;
+	@Column(name="last_name")
 	private String last_name;
+	@Column(name="email")
 	private String email;
+	@Column(name="city")
 	private String city;
+	@Column(name="country")
 	private String country;
 
 	private ArrayList<Course> courses = new ArrayList<Course>();

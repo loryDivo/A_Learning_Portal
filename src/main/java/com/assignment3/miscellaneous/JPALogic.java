@@ -13,7 +13,7 @@ public class JPALogic {
     private EntityManager em;   
  
     public JPALogic() {
-        emf = Persistence.createEntityManagerFactory("assignment3db");
+        emf = Persistence.createEntityManagerFactory("assignment3");
         em = emf.createEntityManager();
     }
     
@@ -31,8 +31,8 @@ public class JPALogic {
         em.getTransaction().commit();   
         em.detach(obj);
     }
-    public Query jpaRead(String query) {
-        Query q = em.createQuery(query);
+    public Query jpaRead(String query, Class objClass) {
+        Query q = em.createQuery(query, objClass);
         return q;
     }
     public void jpaUpdate(Object obj) {     
@@ -47,6 +47,7 @@ public class JPALogic {
         em.remove(managed);
         em.getTransaction().commit();
     }
+    
     public void closeLogicaJPA() {
         em.close();
         emf.close();

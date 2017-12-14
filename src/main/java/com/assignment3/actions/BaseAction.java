@@ -3,8 +3,7 @@ package com.assignment3.actions;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
-
-import com.assignment3.miscellaneous.HibernateDB;
+import com.assignment3.miscellaneous.JPALogic;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
 import com.opensymphony.xwork2.ActionSupport;
@@ -33,7 +32,7 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	public void prepare() throws Exception {
 		Integer id = (Integer)session.get("userId");
 		if(id != null) {
-			User user = HibernateDB.getInstance().find(User.class, id);
+			User user = (User)JPALogic.getInstance().jpaRead("SELECT id FROM users WHERE id=" +id, User.class).getSingleResult();
 			
 			setUser(user);
 		}

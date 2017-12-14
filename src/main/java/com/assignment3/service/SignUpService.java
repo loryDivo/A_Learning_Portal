@@ -3,7 +3,7 @@ package com.assignment3.service;
 import java.util.Random;
 
 import com.assignment3.miscellaneous.Emailer;
-import com.assignment3.miscellaneous.HibernateDB;
+import com.assignment3.miscellaneous.JPALogic;
 import com.assignment3.models.User;
 
 public class SignUpService {
@@ -11,9 +11,10 @@ public class SignUpService {
 	private static final String subject = "Conferma Registrazione";
 	
 	public static boolean isUniqueUsername(String username) {
-		return HibernateDB.getInstance().findByField(User.class, "username", username) == null;
+		return (JPALogic.getInstance().jpaRead("SELECT username FROM User WHERE username="+ "\'" + username + "\'", 
+				String.class).getResultList().isEmpty());
+		//return true;
 	}
-	
 	public static boolean isStrongPassword(String password) {
 		return true;
 	}
@@ -23,7 +24,9 @@ public class SignUpService {
 	}
 	
 	public static boolean isUniqueEmail(String email) {
-		return HibernateDB.getInstance().findByField(User.class, "email", email) == null;
+		return (JPALogic.getInstance().jpaRead("SELECT email " + " FROM User WHERE email = "+"\'" + email + "\'", 
+				String.class).getResultList()).isEmpty();
+		//return true;
 	}
 	
 	public static boolean sendEmail(User user) {
@@ -43,8 +46,8 @@ public class SignUpService {
 		return sb.toString();
 	}
 	
-	public static User createNewUser(String username, String password, String name, String last_name, String email) {
+	public static void createNewUser(String username, String password, String name, String last_name, String email) {
 		User user = new User(username, password, name, last_name, email);
-		return (User) HibernateDB.getInstance().save(user);
+		JPALogic.getInstance().jpaCreate(user);
 	}
 }
