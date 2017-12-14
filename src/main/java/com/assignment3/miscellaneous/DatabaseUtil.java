@@ -17,8 +17,8 @@ public class DatabaseUtil {
 	
 	public static DatabaseUtil instance;
 	
-	private EntityManagerFactory emf;
-    private EntityManager em;  
+	private static EntityManagerFactory emf;
+    private static EntityManager em;  
     private CriteriaBuilder cb;
 	
 	public DatabaseUtil() {
@@ -28,7 +28,9 @@ public class DatabaseUtil {
 	}
 	
 	public static DatabaseUtil getNewInstance() {
-		instance = new DatabaseUtil();
+		if(instance ==null ) {
+			instance = new DatabaseUtil();
+		}
 		
 		return instance;
 	}

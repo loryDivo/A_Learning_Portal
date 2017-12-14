@@ -2,15 +2,47 @@ package com.assignment3.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="courses")
 public class Course implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private int id;
+	@Column(name="name")
 	private String name;
-	private int CFU;
+	@Column(name="cfu")
+	private String CFU;
 	
-	public Course(String name) {
-		this.name = name;
+	@ManyToMany(mappedBy = "courses")
+	private List<User> users = new ArrayList<User>();
+	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public Course() {
+		
+	}
+	
+	public Course(String name, String cfu) {
+		setName(name);
+		setCFU(cfu);
 	}
 	
 	public String getName() {
@@ -21,22 +53,24 @@ public class Course implements Serializable {
 		this.name = name;
 	}
 
-	public int getCFU() {
+	public String getCFU() {
 		return CFU;
 	}
 
-	public void setCFU(int CFU) {
+	public void setCFU(String CFU) {
 		this.CFU = CFU;
 	}
 	
+	public void addUser(User user) {
+		users.add(user);
+	}
+	
+	public void removeUser(User user) {
+		users.remove(user);
+	}
+	
 	public static ArrayList<Course> getAll() {
-		ArrayList<Course> ret = new ArrayList<Course>();
-		for(int i = 0; i < 10; i++) {
-			Course course = new Course("course"+i);
-			course.setCFU(10);
-			ret.add(course);
-		}
-		return ret;
+		return null;
 	}
 
 }

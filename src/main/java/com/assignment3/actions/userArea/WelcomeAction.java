@@ -16,7 +16,7 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	private List<Course> courses;
 	
 	public String execute() {
-		setUsers(DatabaseUtil.getNewInstance().getAll(User.class));
+		//setUsers(DatabaseUtil.getNewInstance().getAll(User.class));
 		//setCourses(DatabaseUtil.getNewInstance().getAll(Course.class));
 		return SUCCESS;
 	}
