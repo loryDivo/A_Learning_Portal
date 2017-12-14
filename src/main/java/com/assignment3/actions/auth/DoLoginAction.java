@@ -3,7 +3,6 @@ package com.assignment3.actions.auth;
 import com.assignment3.actions.BaseAction;
 import com.assignment3.actions.NotLoggedIn;
 import com.assignment3.models.User;
-import com.assignment3.service.LoginService;
 
 public class DoLoginAction extends BaseAction implements NotLoggedIn {
 	
@@ -20,12 +19,18 @@ public class DoLoginAction extends BaseAction implements NotLoggedIn {
 		User user = LoginService.authenticate(getUsername(), getPassword());
 		
 		if(user != null) {
+			if(LoginService.checkIfBanned(user)) {
+				addFieldError("", "The user is banned");
+				return INPUT;
+			}
+			
 			LoginService.saveUserIntoSession(user.getId(), session);
 			
 			return SUCCESS;
 		}
 		
-		return ERROR;
+		addFieldError("", "Wrong credentials");
+		return INPUT;
 	}
 	
 	public String getUsername() {

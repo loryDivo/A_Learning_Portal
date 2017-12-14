@@ -10,12 +10,12 @@
 
     <package name="assignment3" extends="default">
         <action name="index" class="com.assignment3.actions.IndexAction">
-            <result name="success">/index.jsp</result>
+            <result name="success">/JSP/index.jsp</result>
         </action>
     </package>
     
     <include file="struts/auth.xml"></include>
     
-    <include file="struts/user.xml"></include>
+    <include file="struts/userArea.xml"></include>
 
 </struts>

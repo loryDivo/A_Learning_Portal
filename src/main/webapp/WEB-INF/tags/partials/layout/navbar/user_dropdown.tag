@@ -10,9 +10,9 @@
 			<div class="navbar-login">
 				<div class="row">
 					<div class="col-lg-4">
-						<p class="text-center">
-							<span class="glyphicon glyphicon-user icon-size"></span>
-						</p>
+						<a href="welcome" class="text-center"> <span
+							class="glyphicon glyphicon-user icon-size"></span>
+						</a>
 					</div>
 					<div class="col-lg-8">
 						<p class="text-left">
@@ -20,8 +20,7 @@
 						</p>
 						<p class="text-left small"><s:property value="%{user.email}"></s:property></p>
 						<p class="text-left">
-							<a href="#" class="btn btn-primary btn-block btn-sm">Actualizar
-								Datos</a>
+							<a href="edit-user" class="btn btn-primary btn-block btn-sm">Gestisci Account</a>
 						</p>
 					</div>
 				</div>

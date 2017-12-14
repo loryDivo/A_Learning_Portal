@@ -3,10 +3,8 @@ package com.assignment3.actions.auth;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.assignment3.actions.BaseAction;
-import com.assignment3.miscellaneous.JPALogic;
+import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.User;
-import com.assignment3.service.LoginService;
-import com.assignment3.service.SignUpService;
 
 public class DoSignUpAction extends BaseAction implements SessionAware {
 	
@@ -43,7 +41,7 @@ public class DoSignUpAction extends BaseAction implements SessionAware {
 	public String execute() {
 		SignUpService.createNewUser(getUsername(), getPassword(), getName(), getLast_name(), getEmail());
 		// TODO: try to get the f**ing id
-		int id = (Integer)JPALogic.getInstance().jpaRead("SELECT id FROM User WHERE username = " + "\'" + username + "\'" + " AND password = " + "\'"+ password +"\'", Integer.class).getSingleResult();
+		int id = DatabaseUtil.getNewInstance().findByField(User.class, "username", getUsername()).getId();
 		boolean send = true;
 		//normally it would be required the email confirmation, but for this project the user will be signed up immediately
 		/*if(SignUpService.sendEmail(user)) return true;

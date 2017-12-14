@@ -2,6 +2,7 @@ package com.assignment3.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,8 @@ public class User implements Serializable {
 	private String city;
 	@Column(name="country")
 	private String country;
+	@Column(name="ban_until")
+	private Date ban_until;
 
 	private ArrayList<Course> courses = new ArrayList<Course>();
 	
@@ -111,26 +114,12 @@ public class User implements Serializable {
 	public void setCourses(ArrayList<Course> courses) {
 		this.courses = courses;
 	}
-	
-	public Integer save() {
-		return 2;
+	public Date getBan_until() {
+		return ban_until;
+	}
+	public void setBan_until(Date ban_until) {
+		this.ban_until = ban_until;
 	}
 	
-	public static User findByid(int id) {
-		User user = new User("username", "password", "name", "last name", "email@email.com");
-		if(id == 1) user.setAdmin(true);
-		else user.setAdmin(false);
-		
-		return user;
-	}
-
-	public static ArrayList<User> getAll() {
-		ArrayList<User> ret = new ArrayList<User>();
-		for(int i = 0; i < 10; i++) {
-			User user = new User("user"+i, "password"+i, "name"+i, "surname"+i, "email@email"+i+".it");
-			ret.add(user);
-		}
-		return ret;
-	}
 	
 }

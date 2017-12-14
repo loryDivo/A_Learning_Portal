@@ -1,9 +1,9 @@
-package com.assignment3.service;
+package com.assignment3.actions.auth;
 
 import java.util.Random;
 
+import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.miscellaneous.Emailer;
-import com.assignment3.miscellaneous.JPALogic;
 import com.assignment3.models.User;
 
 public class SignUpService {
@@ -11,24 +11,18 @@ public class SignUpService {
 	private static final String subject = "Conferma Registrazione";
 	
 	public static boolean isUniqueUsername(String username) {
-		return (JPALogic.getInstance().jpaRead("SELECT username FROM User WHERE username="+ "\'" + username + "\'", 
-				String.class).getResultList().isEmpty());
-		//return true;
+		return DatabaseUtil.getNewInstance().findByField(User.class, "username", username) == null;
 	}
 	public static boolean isStrongPassword(String password) {
 		return true;
 	}
-	
 	public static boolean isValidEmail(String email) {
 		return true;
 	}
-	
 	public static boolean isUniqueEmail(String email) {
-		return (JPALogic.getInstance().jpaRead("SELECT email " + " FROM User WHERE email = "+"\'" + email + "\'", 
-				String.class).getResultList()).isEmpty();
-		//return true;
+		return DatabaseUtil.getNewInstance().findByField(User.class, "email", email) == null;
 	}
-	
+
 	public static boolean sendEmail(User user) {
 		String aCode = generateActivationCode();
 		String body = "Grazie per esserti registrato. Ti chiediamo di premere sul seguente link per attivare il tuo account: [completeUrl]+" + aCode;
@@ -48,6 +42,6 @@ public class SignUpService {
 	
 	public static void createNewUser(String username, String password, String name, String last_name, String email) {
 		User user = new User(username, password, name, last_name, email);
-		JPALogic.getInstance().jpaCreate(user);
+		DatabaseUtil.getNewInstance().save(user);
 	}
 }
