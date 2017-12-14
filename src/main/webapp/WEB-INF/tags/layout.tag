@@ -9,7 +9,7 @@
   	<title>Assignment 3 <jsp:invoke fragment="title"></jsp:invoke></title>
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <sb:head/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/sticky-footer.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/app.css" />
   </head>
   <body>
   	<layout:navbar/>
