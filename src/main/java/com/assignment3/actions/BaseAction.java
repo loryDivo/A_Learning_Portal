@@ -19,8 +19,8 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	protected User user;
 	protected String user_id;
 	protected User selected_user;
-	private User edit_user;
-	private boolean admin_editing = false;
+	protected User edit_user;
+	protected boolean admin_editing = false;
 	
 	public User getUser() {
 		return user;

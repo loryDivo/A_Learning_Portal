@@ -16,7 +16,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${User.getAll()}" var="user">
+			<c:forEach items="${users}" var="user">
 				<tr>
 					<td><c:out value="${user.getUsername()}" /></td>
 					<td><c:out value="${user.getName()}" /></td>
@@ -27,7 +27,7 @@
 							<button type="button" class="btn btn-info">Manage</button>
 						</a>
 					</td>
-					<c:if test="${user.getBan_until() != null }">
+					<c:if test="${user.isBanned()}">
 						<td>
 							<a href="doEditBan?user_id=${user.getId()}">
 								<button type="button" class="btn btn-danger">Remove Ban</button>

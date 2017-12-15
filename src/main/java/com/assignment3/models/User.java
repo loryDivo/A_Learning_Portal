@@ -124,4 +124,14 @@ public class User implements Serializable {
 	public void setBan_until(Date ban_until) {
 		this.ban_until = ban_until;
 	}
+	
+	public boolean isBanned() {
+		if(getBan_until() == null) return false;
+		
+		Date currentDate = new Date();
+		Date ban = getBan_until();
+		if(ban.getTime() < currentDate.getTime()) return false;
+		
+		return true;
+	}
 }

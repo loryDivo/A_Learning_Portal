@@ -35,7 +35,7 @@
                 		</div>
                 </div>
 
-                <s:submit cssClass="btn btn-primary"/>
+                <s:submit cssClass="btn btn-primary" value="Sign Up"/>
             </s:form>
     </jsp:body>
 </t:layout>
