@@ -9,6 +9,7 @@
     		<div class="row">
             <div class="col-md-6">
 		        <s:form action="doEditUser" enctype="multipart/form-data" theme="bootstrap" label="Edit Data">
+		        		<s:hidden name="user_id" value="%{edit_user.getId()}" />
 					<div class="row">
 		            		<div class="col-md-6">
 		            			<s:textfield label="Name" name="name" value="%{edit_user.getName()}" />
@@ -26,18 +27,14 @@
 		                		<s:textfield label="Country" name="country" value="%{edit_user.getCountry()}" />
 		                	</div>
 		            	</div>
-		            	
-		            	<s:if test="%{admin_editing}">
-		            	
-		            		<p>Put here ban input<p>
-		            	</s:if>
 		
 		            <s:submit cssClass="btn btn-primary" />
 		    		</s:form>
 	    		</div>
-	    		<s:if test="%{!admin_editing}">
-	            <div class="col-md-3 col-md-offset-3">
-			        <s:form action="doEditPassword" enctype="multipart/form-data" theme="bootstrap" label="Edit Password">
+	        <div class="col-md-3 col-md-offset-3">
+	        		<s:if test="%{!admin_editing}">
+			    		<s:form action="doEditPassword" enctype="multipart/form-data" theme="bootstrap" label="Edit Password">
+			        		<s:hidden name="user_id" value="%{edit_user.getId()}" />
 			        		
 			        		<s:password label="Old Password" name="old_password" />
 			        		<s:password label="Password" name="password" />
@@ -45,14 +42,22 @@
 			                
 			        		<s:submit cssClass="btn btn-primary" />
 					</s:form>
-		    		</div>
-		    	</s:if>
-		    	<s:else>
-		    		<s:form action="doEditBan" enctype="multipart/form-data" theme="bootstrap" label="Ban User">
-			            <p>Put here the date input<p>
-			        		<s:submit cssClass="btn btn-primary" />
+				</s:if>
+				<s:else>
+			    		<s:form action="doEditBan" enctype="multipart/form-data" theme="bootstrap" label="Ban User">
+			    			<s:hidden name="user_id" value="%{edit_user.getId()}" />
+				        <s:if test="%{edit_user.getBanUntil() != null}">
+					        <p>Ciao</p>
+					    		<s:submit cssClass="btn btn-danger" value="Remove Ban" />
+				    		</s:if>
+				    		<s:else>
+				    			<s:textfield label="Ban Until" name="ban" placeholder="dd-mm-yyyy"/>
+					        <s:checkbox name="ban_forever" fieldValue="true" label="Ban forever"/>
+					    		<s:submit cssClass="btn btn-primary" value="Confirm" />
+				    		</s:else>
 					</s:form>
-		    	</s:else>
+			    	</s:else>
+		    	</div>
 		</div>
     </jsp:body>
 </t:layout>

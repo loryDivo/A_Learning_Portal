@@ -1,7 +1,7 @@
 package com.assignment3.actions.auth;
 
 import com.assignment3.actions.BaseAction;
-import com.assignment3.actions.NotLoggedIn;
+import com.assignment3.interfaces.NotLoggedIn;
 import com.assignment3.models.User;
 
 public class DoLoginAction extends BaseAction implements NotLoggedIn {
@@ -19,8 +19,9 @@ public class DoLoginAction extends BaseAction implements NotLoggedIn {
 		User user = LoginService.authenticate(getUsername(), getPassword());
 		
 		if(user != null) {
-			if(LoginService.checkIfBanned(user)) {
-				addFieldError("", "The user is banned");
+			String bannedeMessage = LoginService.checkIfBanned(user);
+			if(bannedeMessage != null) {
+				addFieldError("", "The user is banned " + bannedeMessage);
 				return INPUT;
 			}
 			

@@ -1,7 +1,7 @@
 package com.assignment3.actions.auth;
 
 import com.assignment3.actions.BaseAction;
-import com.assignment3.actions.NotLoggedIn;
+import com.assignment3.interfaces.NotLoggedIn;
 
 public class LoginAction extends BaseAction implements NotLoggedIn {
 	

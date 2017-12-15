@@ -5,23 +5,11 @@ import java.util.Random;
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.miscellaneous.Emailer;
 import com.assignment3.models.User;
+import com.assignment3.models.helpers.UserHelper;
 
 public class SignUpService {
 	
 	private static final String subject = "Conferma Registrazione";
-	
-	public static boolean isUniqueUsername(String username) {
-		return DatabaseUtil.getNewInstance().findByField(User.class, "username", username) == null;
-	}
-	public static boolean isStrongPassword(String password) {
-		return true;
-	}
-	public static boolean isValidEmail(String email) {
-		return true;
-	}
-	public static boolean isUniqueEmail(String email) {
-		return DatabaseUtil.getNewInstance().findByField(User.class, "email", email) == null;
-	}
 
 	public static boolean sendEmail(User user) {
 		String aCode = generateActivationCode();
@@ -41,7 +29,8 @@ public class SignUpService {
 	}
 	
 	public static void createNewUser(String username, String password, String name, String last_name, String email) {
-		User user = new User(username, password, name, last_name, email);
+		String hashedPassword = UserHelper.getHashedPassword(password);
+		User user = new User(username, hashedPassword, name, last_name, email);
 		DatabaseUtil.getNewInstance().save(user);
 	}
 }

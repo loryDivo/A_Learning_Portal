@@ -1,8 +1,9 @@
-package com.assignment3.actions.userArea;
+package com.assignment3.actions.userArea.userEdit;
 
 import com.assignment3.actions.BaseAction;
-import com.assignment3.actions.LoggedIn;
-import com.assignment3.actions.auth.SignUpService;
+import com.assignment3.actions.userArea.WelcomeAction;
+import com.assignment3.interfaces.LoggedIn;
+import com.assignment3.models.helpers.UserHelper;
 
 public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 
@@ -12,6 +13,7 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 	private String password_confirm;
 	
 	private EditUserService service;
+	private int edit_action;
 	
 	public void validate() {
 		service = new EditUserService(user);
@@ -19,7 +21,7 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 		if(getOld_password().isEmpty()) addFieldError("old_password", "Old password required");
 		else if(!service.oldPasswordCorrect(getOld_password())) addFieldError("old_password", "Old password not corrispondent");
 		else if(getPassword().isEmpty()) addFieldError("password", "New password required");
-		else if(!SignUpService.isStrongPassword(getPassword()))  addFieldError("password", "Please use a stronger password");
+		else if(!UserHelper.isStrongPassword(getPassword()))  addFieldError("password", "Please use a stronger password");
 		else if(!getPassword().equals(getPassword_confirm())) {
 			addFieldError("password", "Password must be the same");
 			addFieldError("password_confirm", "Password must be the same");
@@ -28,6 +30,8 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 	
 	public String execute() {
 		service.editPassword(getPassword());
+		
+		setEdit_action(WelcomeAction.edit_password);
 		
 		return SUCCESS;
 	}
@@ -51,5 +55,11 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 	}
 	public void setPassword_confirm(String password_confirm) {
 		this.password_confirm = password_confirm;
+	}
+	public int getEdit_action() {
+		return edit_action;
+	}
+	public void setEdit_action(int edit_action) {
+		this.edit_action = edit_action;
 	}
 }

@@ -2,9 +2,9 @@ package com.assignment3.interceptors;
 
 import java.util.Map;
 
-import com.assignment3.actions.LoggedIn;
-import com.assignment3.actions.NotLoggedIn;
 import com.assignment3.actions.auth.LoginAction;
+import com.assignment3.interfaces.LoggedIn;
+import com.assignment3.interfaces.NotLoggedIn;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;

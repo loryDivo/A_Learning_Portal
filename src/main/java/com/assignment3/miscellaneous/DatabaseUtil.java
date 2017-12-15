@@ -15,7 +15,7 @@ public class DatabaseUtil {
 	
 	private static final String db_name = "assignment3";
 	
-	public static DatabaseUtil instance;
+	private static DatabaseUtil instance;
 	
 	private EntityManagerFactory emf;
     private EntityManager em;  
@@ -23,8 +23,8 @@ public class DatabaseUtil {
 	
 	public DatabaseUtil() {
 		emf = Persistence.createEntityManagerFactory(db_name);
-        em = emf.createEntityManager();
-        cb = em.getCriteriaBuilder();
+		em = emf.createEntityManager();
+		cb = em.getCriteriaBuilder();
 	}
 	
 	public static DatabaseUtil getNewInstance() {
@@ -41,7 +41,7 @@ public class DatabaseUtil {
 		return  query.getResultList();
 	}
 	
-	public <T> T find(Class<T> clazz, Integer id) {
+	public <T> T find(Class<T> clazz, Object id) {
 		return em.find(clazz, id);
 	}
 	

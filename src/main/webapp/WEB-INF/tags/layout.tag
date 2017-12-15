@@ -18,6 +18,7 @@
       
 	    <div id="body">
 	    
+	    <s:actionmessage theme="bootstrap"/>
 	      <s:actionerror theme="bootstrap"/>
 	      <s:fielderror theme="bootstrap"/>
 	      
