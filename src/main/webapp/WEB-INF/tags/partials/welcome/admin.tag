@@ -14,15 +14,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${users}" var="user">
+			<c:forEach items="${User.getAll()}" var="user">
 				<tr>
 					<td><c:out value="${user.getUsername()}" /></td>
 					<td><c:out value="${user.getLast_name()}" /></td>
 					<td><c:out value="${user.getEmail()}" /></td>
 					<td><button type="button" class="btn btn-info">Manage</button></td>
+					<td><button type="button" class="btn btn-info">Ban</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	
 </div>
 

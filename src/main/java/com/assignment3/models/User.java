@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.assignment3.miscellaneous.DatabaseUtil;
+
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 @Entity
@@ -134,5 +137,9 @@ public class User implements Serializable {
 		this.ban_until = ban_until;
 	}
 	
-	
+	public static List<User> getAll(){
+		List<User> users = new ArrayList<User>();
+		users = DatabaseUtil.getInstance().getAll(User.class);
+		return users;
+	}
 }

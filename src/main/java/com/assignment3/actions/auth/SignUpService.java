@@ -11,7 +11,7 @@ public class SignUpService {
 	private static final String subject = "Conferma Registrazione";
 	
 	public static boolean isUniqueUsername(String username) {
-		return DatabaseUtil.getNewInstance().findByField(User.class, "username", username) == null;
+		return DatabaseUtil.getInstance().findByField(User.class, "username", username) == null;
 	}
 	public static boolean isStrongPassword(String password) {
 		return true;
@@ -20,7 +20,7 @@ public class SignUpService {
 		return true;
 	}
 	public static boolean isUniqueEmail(String email) {
-		return DatabaseUtil.getNewInstance().findByField(User.class, "email", email) == null;
+		return DatabaseUtil.getInstance().findByField(User.class, "email", email) == null;
 	}
 
 	public static boolean sendEmail(User user) {
@@ -42,6 +42,6 @@ public class SignUpService {
 	
 	public static void createNewUser(String username, String password, String name, String last_name, String email) {
 		User user = new User(username, password, name, last_name, email);
-		DatabaseUtil.getNewInstance().save(user);
+		DatabaseUtil.getInstance().save(user);
 	}
 }

@@ -17,7 +17,7 @@ public class EditUserAction extends BaseAction implements LoggedIn {
 		setEdit_user(user);
 		if(user_id != null && !user_id.isEmpty() && user.isAdmin()) {
 			Integer id = Integer.parseInt(user_id); 
-			User selected_user = DatabaseUtil.getNewInstance().find(User.class, id);
+			User selected_user = DatabaseUtil.getInstance().find(User.class, id);
 			
 			if(selected_user != null) {
 				setEdit_user(selected_user);

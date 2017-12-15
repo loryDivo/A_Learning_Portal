@@ -33,7 +33,7 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	public void prepare() throws Exception {
 		Integer id = (Integer)session.get("userId");
 		if(id != null) {
-			User user = DatabaseUtil.getNewInstance().find(User.class, id);
+			User user = DatabaseUtil.getInstance().find(User.class, id);
 			
 			setUser(user);
 		}

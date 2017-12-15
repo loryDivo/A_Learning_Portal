@@ -27,7 +27,7 @@ public class DatabaseUtil {
         cb = em.getCriteriaBuilder();
 	}
 	
-	public static DatabaseUtil getNewInstance() {
+	public static DatabaseUtil getInstance() {
 		if(instance ==null ) {
 			instance = new DatabaseUtil();
 		}

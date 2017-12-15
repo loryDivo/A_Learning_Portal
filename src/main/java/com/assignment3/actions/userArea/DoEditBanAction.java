@@ -17,7 +17,7 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 	public void validate() {
 		if(user_id == null || user_id.isEmpty()) addFieldError("", "Missing user id");
 		Integer id = Integer.parseInt(user_id);
-		selected_user = DatabaseUtil.getNewInstance().find(user.getClass(), id);
+		selected_user = DatabaseUtil.getInstance().find(user.getClass(), id);
 		if(user == null) addFieldError("", "User id incorrect");
 		if(user.isAdmin()) addFieldError("", "You cannot edit admin ban");
 	}

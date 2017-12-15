@@ -19,12 +19,12 @@ public class EditUserService {
 		user.setLast_name(last_name);
 		user.setCity(city);
 		user.setCountry(country);
-		DatabaseUtil.getNewInstance().update(user);
+		DatabaseUtil.getInstance().update(user);
 	}
 	
 	public void editPassword(String password) {
 		user.setPassword(password);
-		DatabaseUtil.getNewInstance().update(user);
+		DatabaseUtil.getInstance().update(user);
 	}
 	
 	public boolean oldPasswordCorrect(String password) {

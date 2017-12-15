@@ -45,14 +45,14 @@ public class EditCourseAction extends BaseAction implements LoggedIn{
 	
 	public void createNewCourse(String name, String cfu) {
 		Course course = new Course(name, cfu);
-		User user = DatabaseUtil.getNewInstance().findByField(User.class, "id", session.get("userId"));
+		User user = DatabaseUtil.getInstance().findByField(User.class, "id", session.get("userId"));
 		user.addCourse(course);
 		course.addUser(user);
-		DatabaseUtil.getNewInstance().save(course);
+		DatabaseUtil.getInstance().save(course);
 	}
 	
 	public boolean isUniqueCourse(String name) {
-		return DatabaseUtil.getNewInstance().findByField(Course.class, "name", name) == null;
+		return DatabaseUtil.getInstance().findByField(Course.class, "name", name) == null;
 	}
 	
 }
