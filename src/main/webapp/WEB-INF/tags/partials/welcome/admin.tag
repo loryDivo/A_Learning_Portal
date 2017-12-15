@@ -17,6 +17,7 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${users}" var="user">
+<<<<<<< HEAD
 				<c:if test="${!user.isAdmin()}">
 					<tr>
 						<td><c:out value="${user.getUsername()}" /></td>
@@ -46,7 +47,10 @@
 		</tbody>
 		<tbody>
 			<c:forEach items="${courses}" var="course">
+=======
+>>>>>>> branch 'develop' of https://github.com/stecapra/assignment3.git
 				<tr>
+<<<<<<< HEAD
 					<td><c:out value="${course.getName()}" /></td>
 					<td><c:out value="${course.getCFU()}" /></td>
 					<td><a href="doEditCourseByAdmin?course_id=${course.getId()}&user_id${user.getId()}">
@@ -54,6 +58,24 @@
 					<a href="removeCourseByAdmin?course_id=${course.getId()}">
 							<button type="button" class="btn btn-info">Remove</a></td>
 				</tr>
+=======
+					<td><c:out value="${user.getUsername()}" /></td>
+					<td><c:out value="${user.getName()}" /></td>
+					<td><c:out value="${user.getLast_name()}" /></td>
+					<td><c:out value="${user.getEmail()}" /></td>
+					<td>
+						<a href="edit-user?user_id=${user.getId()}">
+							<button type="button" class="btn btn-info">Manage</button>
+						</a>
+					</td>
+					<c:if test="${user.isBanned()}">
+						<td>
+							<a href="doEditBan?user_id=${user.getId()}">
+								<button type="button" class="btn btn-danger">Remove Ban</button>
+							</a>
+						</td>
+					</c:if>
+>>>>>>> branch 'develop' of https://github.com/stecapra/assignment3.git
 			</c:forEach>
 		</tbody>
 	</table>

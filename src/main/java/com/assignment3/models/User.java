@@ -13,8 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.assignment3.miscellaneous.DatabaseUtil;
-
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 @Entity
@@ -114,28 +112,26 @@ public class User implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
 	public List<Course> getCourses() {
 		return courses;
 	}
-	
 	public void setCourses(ArrayList<Course> courses) {
 		this.courses = courses;
 	}
-	
-	public void addCourse(Course course) {
-		courses.add(course);
-	}
-	
-	public void removeCourse(Course course) {
-		courses.remove(course);
-	}
-	
 	public Date getBan_until() {
 		return ban_until;
 	}
 	public void setBan_until(Date ban_until) {
 		this.ban_until = ban_until;
 	}
-	
+
+	public boolean isBanned() {
+		if(getBan_until() == null) return false;
+		
+		Date currentDate = new Date();
+		Date ban = getBan_until();
+		if(ban.getTime() < currentDate.getTime()) return false;
+		
+		return true;
+	}
 }

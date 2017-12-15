@@ -14,14 +14,10 @@ import javax.crypto.spec.PBEKeySpec;
 
 public class PasswordHelper {
 	
-	/**
-	 * Each token produced by this class uses this identifier as a prefix.
-	 */
+	public static final String password_strong_error = "Password must be at least 8 characters, containing a letter and a number";
+	
 	public static final String ID = "$31$";
 
-	/**
-	 * The minimum recommended cost, used by default
-	 */
 	public static final int DEFAULT_COST = 16;
 
 	private static final String ALGORITHM = "PBKDF2WithHmacSHA1";
@@ -38,12 +34,6 @@ public class PasswordHelper {
 		this(DEFAULT_COST);
 	}
 
-	/**
-	 * Create a password manager with a specified cost
-	 * 
-	 * @param cost
-	 * the exponential computational cost of hashing a password, 0 to 30
-	 */
 	public PasswordHelper(int cost) {
 		iterations(cost); /* Validate cost */
 		this.cost = cost;
@@ -56,11 +46,6 @@ public class PasswordHelper {
 		return 1 << cost;
 	}
 
-	/**
-	 * Hash a password for storage.
-	 * 
-	 * @return a secure authentication token to be stored for later authentication
-	 */
 	public String hash(char[] password) {
 		byte[] salt = new byte[SIZE / 8];
 		random.nextBytes(salt);
@@ -72,11 +57,6 @@ public class PasswordHelper {
 		return ID + cost + '$' + enc.encodeToString(hash);
 	}
 
-	/**
-	 * Authenticate with a password and a stored password token.
-	 * 
-	 * @return true if the password and token match
-	 */
 	public boolean authenticate(char[] password, String token) {
 		Matcher m = layout.matcher(token);
 		if (m.matches()) {
@@ -102,5 +82,21 @@ public class PasswordHelper {
 		} catch (InvalidKeySpecException ex) {
 			throw new IllegalStateException("Invalid SecretKeyFactory", ex);
 		}
+	}
+	
+	public static boolean isPasswordIsStrong(String password) {
+		boolean hasLetter = false;
+        boolean hasDigit = false;
+		if (password.length() >= 8) {
+            for (int i = 0; i < password.length(); i++) {
+                char x = password.charAt(i);
+                if (Character.isLetter(x)) hasLetter = true;
+                else if (Character.isDigit(x)) hasDigit = true;
+                if(hasLetter && hasDigit) break;
+            }
+            if (hasLetter && hasDigit) return true;
+        } 
+		
+		return false;
 	}
 }

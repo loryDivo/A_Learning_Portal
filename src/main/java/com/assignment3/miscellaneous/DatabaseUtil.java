@@ -22,9 +22,13 @@ public class DatabaseUtil {
     private CriteriaBuilder cb;
 	
 	public DatabaseUtil() {
+		try {
 		emf = Persistence.createEntityManagerFactory(db_name);
 		em = emf.createEntityManager();
 		cb = em.getCriteriaBuilder();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static DatabaseUtil getInstance() {
@@ -63,7 +67,11 @@ public class DatabaseUtil {
 	
 	public Object save(Object obj) {
 		em.getTransaction().begin();
-        em.persist(obj);        
+        try {
+        		em.persist(obj);
+        } catch(Exception e) {
+        		e.printStackTrace();
+        }
         em.getTransaction().commit();   
         em.detach(obj);
         return obj;

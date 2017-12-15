@@ -3,7 +3,8 @@ package com.assignment3.actions.userArea.userEdit;
 import com.assignment3.actions.BaseAction;
 import com.assignment3.actions.userArea.WelcomeAction;
 import com.assignment3.interfaces.LoggedIn;
-import com.assignment3.models.helpers.UserHelper;
+import com.assignment3.models.helpers.PasswordHelper;
+import com.assignment3.models.helpers.UsersHelper;
 
 public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 
@@ -21,7 +22,7 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 		if(getOld_password().isEmpty()) addFieldError("old_password", "Old password required");
 		else if(!service.oldPasswordCorrect(getOld_password())) addFieldError("old_password", "Old password not corrispondent");
 		else if(getPassword().isEmpty()) addFieldError("password", "New password required");
-		else if(!UserHelper.isStrongPassword(getPassword()))  addFieldError("password", "Please use a stronger password");
+		else if(!UsersHelper.isStrongPassword(getPassword()))  addFieldError("password", PasswordHelper.password_strong_error);
 		else if(!getPassword().equals(getPassword_confirm())) {
 			addFieldError("password", "Password must be the same");
 			addFieldError("password_confirm", "Password must be the same");
@@ -35,8 +36,6 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 		
 		return SUCCESS;
 	}
-	
-	
 
 	public String getOld_password() {
 		return old_password;

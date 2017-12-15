@@ -20,7 +20,7 @@
 						</p>
 						<p class="text-left small"><s:property value="%{user.email}"></s:property></p>
 						<p class="text-left">
-							<a href="edit-user" class="btn btn-primary btn-block btn-sm">Gestisci Account</a>
+							<a href="edit-user" class="btn btn-primary btn-block btn-sm">Manage Account</a>
 						</p>
 					</div>
 				</div>

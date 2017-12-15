@@ -28,7 +28,7 @@
 		                	</div>
 		            	</div>
 		
-		            <s:submit cssClass="btn btn-primary" />
+		            <s:submit cssClass="btn btn-primary" value="Confirm Edit" />
 		    		</s:form>
 	    		</div>
 	        <div class="col-md-3 col-md-offset-3">
@@ -40,20 +40,20 @@
 			        		<s:password label="Password" name="password" />
 			            <s:password label="Repeat Password" name="password_confirm" />
 			                
-			        		<s:submit cssClass="btn btn-primary" />
+			        		<s:submit cssClass="btn btn-primary" value="Change Password" />
 					</s:form>
 				</s:if>
 				<s:else>
 			    		<s:form action="doEditBan" enctype="multipart/form-data" theme="bootstrap" label="Ban User">
 			    			<s:hidden name="user_id" value="%{edit_user.getId()}" />
-				        <s:if test="%{edit_user.getBanUntil() != null}">
-					        <p>Ciao</p>
+				        <s:if test="%{ban_until_message != null}">
+					        <h3><s:property value="ban_until_message"/></h3>
 					    		<s:submit cssClass="btn btn-danger" value="Remove Ban" />
 				    		</s:if>
 				    		<s:else>
 				    			<s:textfield label="Ban Until" name="ban" placeholder="dd-mm-yyyy"/>
 					        <s:checkbox name="ban_forever" fieldValue="true" label="Ban forever"/>
-					    		<s:submit cssClass="btn btn-primary" value="Confirm" />
+					    		<s:submit cssClass="btn btn-primary" value="Confirm Ban" />
 				    		</s:else>
 					</s:form>
 			    	</s:else>

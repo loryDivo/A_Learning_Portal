@@ -45,9 +45,7 @@ public class Course implements Serializable {
 		this.users = users;
 	}
 
-	public Course() {
-		
-	}
+	public Course() {}
 	
 	public Course(String name, String cfu) {
 		setName(name);
@@ -77,7 +75,7 @@ public class Course implements Serializable {
 	public void removeUser(User user) {
 		users.remove(user);
 	}
-	
+
 	public static ArrayList<Course> getAll() {
 		return null;
 	}
@@ -105,5 +103,5 @@ public class Course implements Serializable {
 			return false;
 		return true;
 	}
+}	
 	
-}

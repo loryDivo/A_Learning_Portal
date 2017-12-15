@@ -11,7 +11,7 @@ public class AddCourseByUserAction extends BaseAction implements LoggedIn{
 
 
 	public String execute() {
-		user.addCourse(selected_course);
+		user.getCourses().add(selected_course);
 		selected_course.addUser(user);
 		DatabaseUtil.getInstance().save(selected_course);
 		return SUCCESS;
