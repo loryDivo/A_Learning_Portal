@@ -5,6 +5,7 @@ import com.assignment3.interfaces.LoggedIn;
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
+import com.assignment3.models.helpers.CourseHelper;
 
 public class EditCourseAction extends BaseAction implements LoggedIn{
 	
@@ -31,10 +32,10 @@ public class EditCourseAction extends BaseAction implements LoggedIn{
 
 	
 	public void validate() {
-		if(getName().isEmpty() | !isUniqueCourse(getName())) {
+		if(!CourseHelper.validCourseName(getName())) {
 			addFieldError("name", "name is not valid");
 		}
-		if(getCfu().isEmpty()) {
+		if(!CourseHelper.validCFUName(getCfu())) {
 			addFieldError("cfu", "cfu is not valid");
 		}
 	}
@@ -46,14 +47,9 @@ public class EditCourseAction extends BaseAction implements LoggedIn{
 	
 	public void createNewCourse(String name, String cfu) {
 		Course course = new Course(name, cfu);
-		User user = DatabaseUtil.getInstance().findByField(User.class, "id", session.get("userId"));
-		user.addCourse(course);
 		course.addUser(user);
 		DatabaseUtil.getInstance().save(course);
 	}
-	
-	public boolean isUniqueCourse(String name) {
-		return DatabaseUtil.getInstance().findByField(Course.class, "name", name) == null;
-	}
+
 	
 }

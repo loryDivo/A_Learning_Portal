@@ -4,7 +4,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.assignment3.models.Course;
 import com.assignment3.models.User;
+import com.assignment3.models.helpers.CourseHelper;
 import com.assignment3.models.helpers.UserHelper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,6 +24,14 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	private User edit_user;
 	private boolean admin_editing = false;
 	
+	protected Course selected_course;
+	
+	public Course getSelected_course() {
+		return selected_course;
+	}
+	public void setSelected_course(Course selected_course) {
+		this.selected_course = selected_course;
+	}
 	public User getUser() {
 		return user;
 	}
@@ -62,6 +72,14 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 		User logged_user = UserHelper.getLoggedUser(session);
 		setUser(logged_user);
 		setSelectedUserById();
+		setSelectedCourseById();
+	}
+	
+	public void setSelectedCourseById() {
+		CourseHelper cHelper = new CourseHelper();
+		ActionContext context = ActionContext.getContext();
+		Course selected_course = cHelper.getCourseFromUrlId(context);
+		setSelected_course(selected_course);
 	}
 	
 	public void setSelectedUserById() {
@@ -79,4 +97,6 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 			setAdmin_editing(true);
 		}
 	}
+	
+	
 }

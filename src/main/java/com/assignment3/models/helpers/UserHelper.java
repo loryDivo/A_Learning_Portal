@@ -1,10 +1,13 @@
 package com.assignment3.models.helpers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.Parameter;
 
 import com.assignment3.miscellaneous.DatabaseUtil;
+import com.assignment3.models.Course;
 import com.assignment3.models.User;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -13,6 +16,7 @@ public class UserHelper {
 	private static final String user_id_url_param_name = "user_id";
 	private User user;
 	
+
 	public UserHelper(User user) {
 		this.user = user;
 	}
@@ -27,6 +31,24 @@ public class UserHelper {
 				return DatabaseUtil.getInstance().find(User.class, u_id);
 		}
 		return null;
+	}
+
+	public static List<Course> getRemainingCourses(List<Course> userCourses, List<Course> allCourses){
+		List<Course> remainingCourses = new ArrayList<Course>();
+		for (Course course : allCourses) {
+			if(!userCourses.contains(course)) {
+				remainingCourses.add(course);
+			}
+		}
+		return remainingCourses;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public boolean checkPassword(String password) {

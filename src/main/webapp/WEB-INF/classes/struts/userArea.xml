@@ -57,6 +57,33 @@
 		        <param name="namespace">/</param>
 		    </result>
         </action>
+        <action name="addCourseByUser" class="com.assignment3.actions.userArea.userEdit.AddCourseByUserAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <action name="removeCourseByUser" class="com.assignment3.actions.userArea.userEdit.RemoveCourseByUserAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <action name="removeCourseByAdmin" class="com.assignment3.actions.userArea.userEdit.RemoveCourseByAdminAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <action name="doEditCourseByAdmin" class="com.assignment3.actions.userArea.userEdit.DoEditCourseByAdminAction">
+             <result name="success">/JSP/userArea/editCourse.jsp</result>
+        </action>
+        <action name="editCourseByAdmin" class="com.assignment3.actions.userArea.userEdit.EditCourseByAdminAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
     </package>
     
 </struts>

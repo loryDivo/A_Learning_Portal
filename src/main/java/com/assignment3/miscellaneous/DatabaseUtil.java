@@ -69,6 +69,13 @@ public class DatabaseUtil {
         return obj;
 	}
 	
+	public void remove(Object obj) {
+		em.getTransaction().begin();
+        em.remove(obj); 
+        em.getTransaction().commit();
+        em.detach(obj);
+	}
+	
 	public void update(Object obj) {
 		em.getTransaction().begin();
         em.merge(obj);  

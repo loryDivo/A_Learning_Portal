@@ -7,6 +7,7 @@ import com.assignment3.interfaces.LoggedIn;
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
+import com.assignment3.models.helpers.UserHelper;
 
 public class WelcomeAction extends BaseAction implements LoggedIn {
 	
@@ -24,6 +25,8 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	private String edit;
 	private List<User> users;
 	private List<Course> courses;
+	private List<Course> remaining_courses;
+	
 	
 	public String execute() {
 		//check if is a redirect from edit page and show the message
@@ -31,11 +34,18 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 		if(message != null) addActionMessage(message);
 		
 		setUsers(DatabaseUtil.getInstance().getAll(User.class));
-
-		//setCourses(DatabaseUtil.getNewInstance().getAll(Course.class));
+		setCourses(DatabaseUtil.getInstance().getAll(Course.class));
+		setRemaining_courses(UserHelper.getRemainingCourses(user.getCourses(), courses));
 		return SUCCESS;
 	}
 	
+	public List<Course> getRemaining_courses() {
+		return remaining_courses;
+	}
+
+	public void setRemaining_courses(List<Course> remaining_courses) {
+		this.remaining_courses = remaining_courses;
+	}
 	
 	public List<User> getUsers() {
 		return users;

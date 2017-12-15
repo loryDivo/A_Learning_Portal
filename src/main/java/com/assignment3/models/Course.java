@@ -16,10 +16,12 @@ import javax.persistence.Table;
 @Table(name="courses")
 public class Course implements Serializable {
 	
+
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
+
 	@Column(name="name")
 	private String name;
 	@Column(name="cfu")
@@ -28,6 +30,13 @@ public class Course implements Serializable {
 	@ManyToMany(mappedBy = "courses")
 	private List<User> users = new ArrayList<User>();
 	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	public List<User> getUsers() {
 		return users;
 	}
@@ -73,4 +82,28 @@ public class Course implements Serializable {
 		return null;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Course other = (Course) obj;
+		if (CFU == null) {
+			if (other.CFU != null)
+				return false;
+		} else if (!CFU.equals(other.CFU))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+	
 }

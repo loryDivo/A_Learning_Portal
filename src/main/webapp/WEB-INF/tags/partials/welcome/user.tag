@@ -16,10 +16,20 @@
 				<tr>
 					<td><c:out value="${course.getName()}" /></td>
 					<td><c:out value="${course.getCFU()}" /></td>
-					<td><button type="button" class="btn btn-info">Manage</button></td>
+					<td><a class="btn btn-primary" href="removeCourseByUser?user_id=${user.getId()}&course_id=${course.getId()}" role="button">Remove</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<a class="btn btn-primary" href="doEditCourse" role="button">Add course</a>
+    <div class="dropdown">
+        <a class="btn btn-primary dropdown-toggle"  id = "botton_add_course" type="button" data-toggle="dropdown">Add course
+    		<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <c:forEach items="${remaining_courses}" var="course">
+					<li><a
+						href="<c:url value='addCourseByUser?user_id=${user.getId()}&course_id=${course.getId()}'/>"><c:out
+								value="${course.getName()}" /></a></li>
+			</c:forEach>
+        </ul>
+    </div>
 </div>

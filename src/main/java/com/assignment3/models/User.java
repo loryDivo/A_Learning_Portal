@@ -23,7 +23,7 @@ public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column(name="username")
 	private String username;
@@ -138,9 +138,4 @@ public class User implements Serializable {
 		this.ban_until = ban_until;
 	}
 	
-	public static List<User> getAll(){
-		List<User> users = new ArrayList<User>();
-		users = DatabaseUtil.getInstance().getAll(User.class);
-		return users;
-	}
 }
