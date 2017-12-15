@@ -2,6 +2,7 @@ package com.assignment3.models.helpers;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,6 +11,7 @@ import org.apache.struts2.dispatcher.Parameter;
 
 import com.assignment3.actions.userArea.userEdit.EditUserService;
 import com.assignment3.miscellaneous.DatabaseUtil;
+import com.assignment3.models.Course;
 import com.assignment3.models.User;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -81,6 +83,12 @@ public class UsersHelper {
 			return DatabaseUtil.getInstance().find(User.class, id);
 		
 		return null;
+	}
+	
+	public List<Course> getRemainingCourses(List<Course> courses) {
+		List<Course> copy = courses;
+		copy.removeAll(user.getCourses());
+		return courses;
 	}
 	
 	

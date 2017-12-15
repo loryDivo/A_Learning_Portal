@@ -15,8 +15,6 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 	private String ban;
 	private Boolean ban_forever;
 	
-	private int edit_action;
-	
 	public void validate() {
 		if(!isRemovingBan() && isBan_forever() == false) {
 			try {
@@ -56,12 +54,6 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 	}
 	public void setBan_forever(Boolean ban_forever) {
 		this.ban_forever = ban_forever;
-	}
-	public int getEdit_action() {
-		return edit_action;
-	}
-	public void setEdit_action(int edit_action) {
-		this.edit_action = edit_action;
 	}
 	
 	private boolean isRemovingBan() {

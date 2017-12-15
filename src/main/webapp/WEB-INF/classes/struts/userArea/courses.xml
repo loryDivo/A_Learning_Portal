@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    
+    <package name="courses" extends="default">
+        <action name="add-course" class="com.assignment3.actions.userArea.courses.AddCourseAction">
+            <result name="success">/JSP/userArea/courses/addCourse.jsp</result>
+        </action>
+        <action name="doAddCourse" class="com.assignment3.actions.userArea.courses.DoAddCourseAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="edit">${edit_action}</param>
+		        <param name="namespace">/</param>
+		    </result>
+		    <result name="input">/JSP/userArea/courses/addCourse.jsp</result>
+        </action>
+        <action name="edit-course" class="com.assignment3.actions.userArea.courses.EditCourseAction">
+            <result name="success">/JSP/userArea/courses/editCourse.jsp</result>
+        </action>
+        <action name="doEditCourse" class="com.assignment3.actions.userArea.courses.DoEditCourseAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="edit">${edit_action}</param>
+		        <param name="namespace">/</param>
+		    </result>
+		    <result name="input">/JSP/userArea/courses/editCourse.jsp</result>
+        </action>
+        <action name="show-course" class="com.assignment3.actions.userArea.courses.ShowCourseUsersAction">
+            <result name="success">/JSP/userArea/courses/showUsers.jsp</result>
+        </action>
+        <action name="doRemoveUserToCourse" class="com.assignment3.actions.userArea.courses.DoRemoveUserToCourseAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="edit">${edit_action}</param>
+		        <param name="namespace">/</param>
+		    </result>
+		    <result name="input">/JSP/userArea/courses/showUsers.jsp</result>
+        </action>
+        
+        <action name="doAddCourseToUser" class="com.assignment3.actions.userArea.userEdit.DoAddCourseToUserAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="edit">${edit_action}</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <action name="doRemoveCourseToUser" class="com.assignment3.actions.userArea.userEdit.DoRemoveCourseToUserAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="edit">${edit_action}</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <!-- <action name="addCourseByUser" class="com.assignment3.actions.userArea.userEdit.AddCourseByUserAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <action name="removeCourseByUser" class="com.assignment3.actions.userArea.userEdit.RemoveCourseByUserAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <action name="removeCourseByAdmin" class="com.assignment3.actions.userArea.userEdit.RemoveCourseByAdminAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>
+        <action name="doEditCourseByAdmin" class="com.assignment3.actions.userArea.userEdit.DoEditCourseByAdminAction">
+             <result name="success">/JSP/userArea/editCourse.jsp</result>
+        </action>
+        <action name="editCourseByAdmin" class="com.assignment3.actions.userArea.userEdit.EditCourseByAdminAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="namespace">/</param>
+		    </result>
+        </action>-->
+    </package>
+    
+    
+
+</struts>

@@ -12,7 +12,7 @@ public class CourseHelper {
 
 	private static final String course_id_url_param_name = "course_id";
 	
-	public Course getCourseFromUrlId(ActionContext context) {
+	public static Course getCourseFromUrlId(ActionContext context) {
 		Map<String, Parameter> params = context.getParameters();
 		String id = params.get(course_id_url_param_name).getValue();
 		if (id != null && !id.isEmpty()) {
@@ -21,20 +21,23 @@ public class CourseHelper {
 		}
 		return null;
 	}
-	public static boolean validCourseName(String name) {
-			if(name.isEmpty() | !isUniqueCourse(name)) {
-				return false;
-			}
-			return true;
-	}
-	public static boolean validCFUName(String cfu) {
-		if(cfu.isEmpty()) {
-			return false;
-		}
-		return true;
-	}
-	
-	public static boolean isUniqueCourse(String name) {
+	public static boolean isUniqueName(String name) {
 		return DatabaseUtil.getInstance().findByField(Course.class, "name", name) == null;
+	}
+	public static boolean isUniqueName(String name, Course course) {
+		Course finded_course = DatabaseUtil.getInstance().findByField(Course.class, "name", name);
+		
+		if(finded_course == null) return true;
+		
+		return finded_course.getId() == course.getId();
+	}
+	public static boolean isValidCfu(String cfu) {
+		try {
+			int int_cfu = Integer.parseInt(cfu);
+			if(int_cfu > 0) return true;
+		} catch(Exception e) {
+			//
+		}
+		return false;
 	}
 }

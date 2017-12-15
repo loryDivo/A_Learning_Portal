@@ -7,7 +7,7 @@ import com.assignment3.interfaces.LoggedIn;
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
-import com.assignment3.models.helpers.UserHelper;
+import com.assignment3.models.helpers.UsersHelper;
 
 public class WelcomeAction extends BaseAction implements LoggedIn {
 	
@@ -21,6 +21,14 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	private static final String ban_user_message = "User banned correctly";
 	public static final int ban_user_removed = 4;
 	private static final String ban_user_removed_message = "Ban removed";
+	public static final int course_add = 5;
+	private static final String course_add_message = "Course addedd correctly";
+	public static final int course_edit = 6;
+	private static final String course_edit_message = "Course edited correctly";
+	public static final int course_remove = 7;
+	private static final String course_remove_message = "Course removed correctly";
+	public static final int course_user_remove = 8;
+	private static final String course_user_remove_message = "User removed correctly";
 
 	private String edit;
 	private List<User> users;
@@ -35,7 +43,8 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 		
 		setUsers(DatabaseUtil.getInstance().getAll(User.class));
 		setCourses(DatabaseUtil.getInstance().getAll(Course.class));
-		setRemaining_courses(UserHelper.getRemainingCourses(user.getCourses(), courses));
+		UsersHelper uHelper = new UsersHelper(user);
+		setRemaining_courses(uHelper.getRemainingCourses(courses));
 		return SUCCESS;
 	}
 	
@@ -73,6 +82,10 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 			else if(eValue == edit_password) return edit_password_message;
 			else if(eValue == ban_user) return ban_user_message;
 			else if(eValue == ban_user_removed) return ban_user_removed_message;
+			else if(eValue == course_add) return course_add_message;
+			else if(eValue == course_edit) return course_edit_message;
+			else if(eValue == course_remove) return course_remove_message;
+			else if(eValue == course_user_remove) return course_user_remove_message;
 		} catch(Exception e) {
 			//either there is no edit action or user must change the url
 		}

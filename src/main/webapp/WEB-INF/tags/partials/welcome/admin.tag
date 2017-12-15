@@ -4,7 +4,7 @@
 
 <div class="container">
 	<h2>Admin sign-in</h2>
-	<p>The table cointain user sign-in</p>
+	<p style="margin: 50px 0px 0px 0px;">The table contains user sign-in</p>
 	<table class="table">
 		<thead>
 			<tr>
@@ -17,69 +17,72 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${users}" var="user">
-<<<<<<< HEAD
 				<c:if test="${!user.isAdmin()}">
 					<tr>
 						<td><c:out value="${user.getUsername()}" /></td>
 						<td><c:out value="${user.getName()}" /></td>
 						<td><c:out value="${user.getLast_name()}" /></td>
 						<td><c:out value="${user.getEmail()}" /></td>
-						<td><a href="edit-user?user_id=${user.getId()}">
+						<td>
+							<a href="edit-user?user_id=${user.getId()}">
 								<button type="button" class="btn btn-info">Manage</button>
-						</a></td>
+							</a>
+						</td>
 						<c:if test="${user.getBan_until() != null }">
-							<td><a href="doEditBan?user_id=${user.getId()}">
-									<button type="button" class="btn btn-danger">Remove
-										Ban</button>
-							</a></td>
+							<td>
+								<a href="doEditBan?user_id=${user.getId()}">
+									<button type="button" class="btn btn-danger">Remove Ban</button>
+								</a>
+							</td>
 						</c:if>
+					</tr>
 				</c:if>
 			</c:forEach>
+		</tbody>
 	</table>
-	<p>The table cointain courses</p>
+	<span style="margin: 50px 0px 0px 0px;">The table contains courses</span>
+	<a class="btn btn-primary" style="margin-left: 25px;" href="add-course" role="button">Add course</a>
 	<table class="table">
 		<thead>
 			<tr>
 				<th>Name</th>
 				<th>CFU</th>
+				<th>Users</th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
-		</tbody>
 		<tbody>
 			<c:forEach items="${courses}" var="course">
-=======
->>>>>>> branch 'develop' of https://github.com/stecapra/assignment3.git
 				<tr>
-<<<<<<< HEAD
 					<td><c:out value="${course.getName()}" /></td>
 					<td><c:out value="${course.getCFU()}" /></td>
-					<td><a href="doEditCourseByAdmin?course_id=${course.getId()}&user_id${user.getId()}">
-							<button type="button" class="btn btn-info">Manage</a>
-					<a href="removeCourseByAdmin?course_id=${course.getId()}">
-							<button type="button" class="btn btn-info">Remove</a></td>
-				</tr>
-=======
-					<td><c:out value="${user.getUsername()}" /></td>
-					<td><c:out value="${user.getName()}" /></td>
-					<td><c:out value="${user.getLast_name()}" /></td>
-					<td><c:out value="${user.getEmail()}" /></td>
 					<td>
-						<a href="edit-user?user_id=${user.getId()}">
-							<button type="button" class="btn btn-info">Manage</button>
+						<c:choose>
+							<c:when test="${course.getUsers().size() > 0}">
+								<a href="show-course?course_id=${course.getId()}">
+									<c:out value="${course.getUsers().size()} users" />
+								</a>
+							</c:when>
+							<c:otherwise>
+								<c:out value="${course.getUsers().size()} users" />
+							</c:otherwise>
+						</c:choose>
+					</td>
+					<td></td>
+					<td>
+						<a href="edit-course?course_id=${course.getId()}">
+							<button type="button" class="btn btn-info">Edit</button>
 						</a>
 					</td>
-					<c:if test="${user.isBanned()}">
-						<td>
-							<a href="doEditBan?user_id=${user.getId()}">
-								<button type="button" class="btn btn-danger">Remove Ban</button>
-							</a>
-						</td>
-					</c:if>
->>>>>>> branch 'develop' of https://github.com/stecapra/assignment3.git
+					<td>
+						<a href="removeCourseByAdmin?course_id=${course.getId()}">
+							<button type="button" class="btn btn-danger">Remove</button>
+						</a>
+					</td>
+				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<a class="btn btn-primary" href="doEditCourse" role="button">Add
-		course</a>
 </div>
 

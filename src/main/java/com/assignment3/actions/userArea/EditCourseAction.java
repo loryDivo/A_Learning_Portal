@@ -15,12 +15,12 @@ public class EditCourseAction extends BaseAction implements LoggedIn{
 	private String name;
 	
 	public void validate() {
-		if(!CourseHelper.validCourseName(getName())) {
+		/*if(!CourseHelper.validCourseName(getName())) {
 			addFieldError("name", "name is not valid");
 		}
 		if(!CourseHelper.validCFUName(getCfu())) {
 			addFieldError("cfu", "cfu is not valid");
-		}
+		}*/
 	}
 	
 	public String execute() {
@@ -29,11 +29,11 @@ public class EditCourseAction extends BaseAction implements LoggedIn{
 	}
 	
 	public void createNewCourse(String name, String cfu) {
-		Course course = new Course(name, cfu);
+		//Course course = new Course(name, cfu);
 		User user = DatabaseUtil.getInstance().findByField(User.class, "id", session.get("userId"));
 		//user.addCourse(course);
-		course.addUser(user);
-		DatabaseUtil.getInstance().save(course);
+		//course.addUser(user);
+		//DatabaseUtil.getInstance().save(course);
 	}
 
 	

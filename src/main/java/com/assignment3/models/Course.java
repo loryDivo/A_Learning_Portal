@@ -25,7 +25,7 @@ public class Course implements Serializable {
 	@Column(name="name")
 	private String name;
 	@Column(name="cfu")
-	private String CFU;
+	private Integer CFU;
 	
 	@ManyToMany(mappedBy = "courses")
 	private List<User> users = new ArrayList<User>();
@@ -47,7 +47,7 @@ public class Course implements Serializable {
 
 	public Course() {}
 	
-	public Course(String name, String cfu) {
+	public Course(String name, Integer cfu) {
 		setName(name);
 		setCFU(cfu);
 	}
@@ -60,28 +60,17 @@ public class Course implements Serializable {
 		this.name = name;
 	}
 
-	public String getCFU() {
+	public Integer getCFU() {
 		return CFU;
 	}
 
-	public void setCFU(String CFU) {
+	public void setCFU(Integer CFU) {
 		this.CFU = CFU;
-	}
-	
-	public void addUser(User user) {
-		users.add(user);
-	}
-	
-	public void removeUser(User user) {
-		users.remove(user);
-	}
-
-	public static ArrayList<Course> getAll() {
-		return null;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
+		System.out.println("Enterededededene ndden");
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -89,11 +78,6 @@ public class Course implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Course other = (Course) obj;
-		if (CFU == null) {
-			if (other.CFU != null)
-				return false;
-		} else if (!CFU.equals(other.CFU))
-			return false;
 		if (id != other.id)
 			return false;
 		if (name == null) {

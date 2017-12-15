@@ -18,7 +18,7 @@ public class EditCourseService {
 	}
 	public void editCourse(String name, String CFU) {
 		course.setName(name);
-		course.setCFU(CFU);
+		//course.setCFU(CFU);
 		DatabaseUtil.getInstance().update(course);
 	}
 }

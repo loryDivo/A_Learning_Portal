@@ -3,7 +3,7 @@
 
 <div class="container">
 	<h2>User sign-in</h2>
-	<p>The table cointain course of user</p>
+	<p>The table contains course of user</p>
 	<table class="table">
 		<thead>
 			<tr>
@@ -16,7 +16,7 @@
 				<tr>
 					<td><c:out value="${course.getName()}" /></td>
 					<td><c:out value="${course.getCFU()}" /></td>
-					<td><a class="btn btn-primary" href="removeCourseByUser?user_id=${user.getId()}&course_id=${course.getId()}" role="button">Remove</a></td>
+					<td><a class="btn btn-danger" href="doRemoveCourseToUser?course_id=${course.getId()}" role="button">Remove</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -26,9 +26,11 @@
     		<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
             <c:forEach items="${remaining_courses}" var="course">
-					<li><a
-						href="<c:url value='addCourseByUser?user_id=${user.getId()}&course_id=${course.getId()}'/>"><c:out
-								value="${course.getName()}" /></a></li>
+					<li>
+						<a href="doAddCourseToUser?course_id=${course.getId()}">
+							<c:out value="${course.getName()}" />
+						</a>
+					</li>
 			</c:forEach>
         </ul>
     </div>

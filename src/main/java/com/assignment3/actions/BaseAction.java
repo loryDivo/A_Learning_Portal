@@ -19,20 +19,21 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	private static final long serialVersionUID = 1L;
 	
 	protected Map<String, Object> session;
+	private int edit_action;
 	//We set this variables here because for the most of the action those one will be used
 	protected User user;
 	protected String user_id;
 	protected User selected_user;
 	protected User edit_user;
 	protected boolean admin_editing = false;
-	
+	protected String course_id;
 	protected Course selected_course;
 	
-	public Course getSelected_course() {
-		return selected_course;
+	public int getEdit_action() {
+		return edit_action;
 	}
-	public void setSelected_course(Course selected_course) {
-		this.selected_course = selected_course;
+	public void setEdit_action(int edit_action) {
+		this.edit_action = edit_action;
 	}
 	public User getUser() {
 		return user;
@@ -64,7 +65,18 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	public void setAdmin_editing(boolean admin_editing) {
 		this.admin_editing = admin_editing;
 	}
-	
+	public Course getSelected_course() {
+		return selected_course;
+	}
+	public void setSelected_course(Course selected_course) {
+		this.selected_course = selected_course;
+	}
+	public String getCourse_id() {
+		return course_id;
+	}
+	public void setCourse_id(String course_id) {
+		this.course_id = course_id;
+	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
@@ -78,9 +90,8 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	}
 	
 	public void setSelectedCourseById() {
-		CourseHelper cHelper = new CourseHelper();
 		ActionContext context = ActionContext.getContext();
-		Course selected_course = cHelper.getCourseFromUrlId(context);
+		Course selected_course = CourseHelper.getCourseFromUrlId(context);
 		setSelected_course(selected_course);
 	}
 	
