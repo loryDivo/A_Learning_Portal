@@ -5,7 +5,7 @@ import java.util.Random;
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.miscellaneous.Emailer;
 import com.assignment3.models.User;
-import com.assignment3.models.helpers.UserHelper;
+import com.assignment3.models.helpers.UsersHelper;
 
 public class SignUpService {
 	
@@ -29,7 +29,7 @@ public class SignUpService {
 	}
 	
 	public static void createNewUser(String username, String password, String name, String last_name, String email) {
-		String hashedPassword = UserHelper.getHashedPassword(password);
+		String hashedPassword = UsersHelper.getHashedPassword(password);
 		User user = new User(username, hashedPassword, name, last_name, email);
 		DatabaseUtil.getInstance().save(user);
 	}

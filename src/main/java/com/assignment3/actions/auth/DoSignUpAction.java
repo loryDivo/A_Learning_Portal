@@ -5,7 +5,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.assignment3.actions.BaseAction;
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.User;
-import com.assignment3.models.helpers.UserHelper;
+import com.assignment3.models.helpers.UsersHelper;
 
 public class DoSignUpAction extends BaseAction implements SessionAware {
 	
@@ -20,9 +20,9 @@ public class DoSignUpAction extends BaseAction implements SessionAware {
 	
 	public void validate() {
 		if(getUsername().isEmpty()) addFieldError("username", "Please insert a valid username");
-		else if(!UserHelper.isUniqueUsername(getUsername())) addFieldError("username", "Username already taken");
+		else if(!UsersHelper.isUniqueUsername(getUsername())) addFieldError("username", "Username already taken");
 		if(getPassword().isEmpty()) addFieldError("password", "Please insert a valid password");
-		else if(!UserHelper.isStrongPassword(getPassword())) addFieldError("password", "Please insert a stronger password");
+		else if(!UsersHelper.isStrongPassword(getPassword())) addFieldError("password", "Please insert a stronger password");
 		if(!getPassword().equals(getPassword_confirm())) {
 			addFieldError("password", "Password must match");
 			addFieldError("password_confirm", "Password must match");
@@ -31,8 +31,8 @@ public class DoSignUpAction extends BaseAction implements SessionAware {
 		if(getLast_name().isEmpty()) addFieldError("last_name", "Inser a valid last name");
 		
 		if(getEmail().isEmpty()) addFieldError("email", "Inser a valid email");
-		else if(!UserHelper.isValidEmail(getEmail())) addFieldError("email", "Email not valid");
-		else if(!UserHelper.isUniqueEmail(getEmail())) addFieldError("email", "Email already used");
+		else if(!UsersHelper.isValidEmail(getEmail())) addFieldError("email", "Email not valid");
+		else if(!UsersHelper.isUniqueEmail(getEmail())) addFieldError("email", "Email already used");
 		if(!getEmail().equals(getEmail_confirm())) {
 			addFieldError("email", "Email must match");
 			addFieldError("email_confirm", "Email must match");

@@ -13,8 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.assignment3.miscellaneous.DatabaseUtil;
-
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 @Entity
@@ -23,7 +21,7 @@ public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column(name="username")
 	private String username;
@@ -114,33 +112,16 @@ public class User implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
 	public List<Course> getCourses() {
 		return courses;
 	}
-	
 	public void setCourses(ArrayList<Course> courses) {
 		this.courses = courses;
 	}
-	
-	public void addCourse(Course course) {
-		courses.add(course);
-	}
-	
-	public void removeCourse(Course course) {
-		courses.remove(course);
-	}
-	
 	public Date getBan_until() {
 		return ban_until;
 	}
 	public void setBan_until(Date ban_until) {
 		this.ban_until = ban_until;
-	}
-	
-	public static List<User> getAll(){
-		List<User> users = new ArrayList<User>();
-		users = DatabaseUtil.getInstance().getAll(User.class);
-		return users;
 	}
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.assignment3.models.User;
-import com.assignment3.models.helpers.UserHelper;
+import com.assignment3.models.helpers.UsersHelper;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
@@ -59,14 +59,14 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 
 	public void prepare() throws Exception {
 		//set the session user for the next action and to be used by jsp pages
-		User logged_user = UserHelper.getLoggedUser(session);
+		User logged_user = UsersHelper.getLoggedUser(session);
 		setUser(logged_user);
 		setSelectedUserById();
 	}
 	
 	public void setSelectedUserById() {
 		//set the user passed in the url to be used during admin actions
-		UserHelper uHelper = new UserHelper(user);
+		UsersHelper uHelper = new UsersHelper(user);
 		ActionContext context = ActionContext.getContext();
 		User selected_user = uHelper.getUserFromUrlId(context);
 		setSelected_user(selected_user);

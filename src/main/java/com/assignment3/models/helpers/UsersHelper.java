@@ -8,12 +8,12 @@ import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.User;
 import com.opensymphony.xwork2.ActionContext;
 
-public class UserHelper {
+public class UsersHelper {
 	
 	private static final String user_id_url_param_name = "user_id";
 	private User user;
 	
-	public UserHelper(User user) {
+	public UsersHelper(User user) {
 		this.user = user;
 	}
 	
@@ -59,4 +59,6 @@ public class UserHelper {
 		
 		return null;
 	}
+	
+	
 }

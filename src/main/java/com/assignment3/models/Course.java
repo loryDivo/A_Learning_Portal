@@ -18,7 +18,7 @@ public class Course implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column(name="name")
 	private String name;
@@ -36,9 +36,7 @@ public class Course implements Serializable {
 		this.users = users;
 	}
 
-	public Course() {
-		
-	}
+	public Course() {}
 	
 	public Course(String name, String cfu) {
 		setName(name);
@@ -68,9 +66,4 @@ public class Course implements Serializable {
 	public void removeUser(User user) {
 		users.remove(user);
 	}
-	
-	public static ArrayList<Course> getAll() {
-		return null;
-	}
-
 }

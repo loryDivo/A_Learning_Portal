@@ -10,7 +10,7 @@
 
                 <s:password label="Password" name="password"/>
 
-                <s:submit cssClass="btn btn-primary"/>
+                <s:submit cssClass="btn btn-primary" value="Log in"/>
             </s:form>
     </jsp:body>
 </t:layout>

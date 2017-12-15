@@ -7,14 +7,14 @@ import java.util.Map;
 import com.assignment3.actions.userArea.userEdit.EditUserService;
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.User;
-import com.assignment3.models.helpers.UserHelper;
+import com.assignment3.models.helpers.UsersHelper;
 
 public class LoginService {
 	
 	public static User authenticate(String username, String password) {
 		User user = DatabaseUtil.getInstance().findByField(User.class, "username", username);
 		if(user != null) {
-			UserHelper uHelper = new UserHelper(user);
+			UsersHelper uHelper = new UsersHelper(user);
 			if(uHelper.checkPassword(password))
 				return user;
 		}

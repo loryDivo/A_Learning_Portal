@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.User;
-import com.assignment3.models.helpers.UserHelper;
+import com.assignment3.models.helpers.UsersHelper;
 
 public class EditUserService {
 	
@@ -29,13 +29,13 @@ public class EditUserService {
 	}
 	
 	public void editPassword(String password) {
-		String hashedPassword = UserHelper.getHashedPassword(password);
+		String hashedPassword = UsersHelper.getHashedPassword(password);
 		user.setPassword(hashedPassword);
 		DatabaseUtil.getInstance().update(user);
 	}
 	
 	public boolean oldPasswordCorrect(String password) {
-		UserHelper uHelper = new UserHelper(user);
+		UsersHelper uHelper = new UsersHelper(user);
 		return uHelper.checkPassword(password);
 	}
 	
