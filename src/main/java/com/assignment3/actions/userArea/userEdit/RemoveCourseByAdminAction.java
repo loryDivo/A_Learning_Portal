@@ -30,7 +30,7 @@ public class RemoveCourseByAdminAction extends BaseAction implements LoggedIn{
 	public void removeUserWithCourse(Course course) {
 		for(User user : getUsers()) {
 			if(user.getCourses().contains(course)) {
-				user.removeCourse(course);
+				//user.removeCourse(course);
 			}
 		}
 	}

@@ -8,7 +8,6 @@ import com.assignment3.models.Course;
 import com.assignment3.models.User;
 
 import com.assignment3.models.helpers.CourseHelper;
-import com.assignment3.models.helpers.UserHelper;
 
 import com.assignment3.models.helpers.UsersHelper;
 import com.opensymphony.xwork2.ActionContext;
