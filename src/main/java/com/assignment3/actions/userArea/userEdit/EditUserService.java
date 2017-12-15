@@ -25,13 +25,13 @@ public class EditUserService {
 		user.setLast_name(last_name);
 		user.setCity(city);
 		user.setCountry(country);
-		DatabaseUtil.getNewInstance().update(user);
+		DatabaseUtil.getInstance().update(user);
 	}
 	
 	public void editPassword(String password) {
 		String hashedPassword = UserHelper.getHashedPassword(password);
 		user.setPassword(hashedPassword);
-		DatabaseUtil.getNewInstance().update(user);
+		DatabaseUtil.getInstance().update(user);
 	}
 	
 	public boolean oldPasswordCorrect(String password) {
@@ -55,7 +55,7 @@ public class EditUserService {
 			e.printStackTrace();
 		}
 		user.setBan_until(banUntil);
-		DatabaseUtil.getNewInstance().update(user);
+		DatabaseUtil.getInstance().update(user);
 	}
 
 	public User getUser() {

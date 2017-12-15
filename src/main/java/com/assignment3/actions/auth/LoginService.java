@@ -12,7 +12,7 @@ import com.assignment3.models.helpers.UserHelper;
 public class LoginService {
 	
 	public static User authenticate(String username, String password) {
-		User user = DatabaseUtil.getNewInstance().findByField(User.class, "username", username);
+		User user = DatabaseUtil.getInstance().findByField(User.class, "username", username);
 		if(user != null) {
 			UserHelper uHelper = new UserHelper(user);
 			if(uHelper.checkPassword(password))

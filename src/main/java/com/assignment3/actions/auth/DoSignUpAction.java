@@ -41,8 +41,8 @@ public class DoSignUpAction extends BaseAction implements SessionAware {
 	
 	public String execute() {
 		SignUpService.createNewUser(getUsername(), getPassword(), getName(), getLast_name(), getEmail());
-		// TODO: try to get the f**ing id
-		int id = DatabaseUtil.getNewInstance().findByField(User.class, "username", getUsername()).getId();
+
+		int id = DatabaseUtil.getInstance().findByField(User.class, "username", getUsername()).getId();
 		boolean send = true;
 		//normally it would be required the email confirmation, but for this project the user will be signed up immediately
 		/*if(SignUpService.sendEmail(user)) return true;

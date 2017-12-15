@@ -3,21 +3,27 @@ package com.assignment3.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Column;
 
+import com.assignment3.miscellaneous.DatabaseUtil;
+
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 @Entity
 @Table(name="users")
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	@Column(name="username")
 	private String username;
@@ -38,7 +44,12 @@ public class User implements Serializable {
 	@Column(name="ban_until")
 	private Date ban_until;
 
-	private ArrayList<Course> courses = new ArrayList<Course>();
+	
+	@ManyToMany
+	@JoinTable(name="users_courses",
+	joinColumns={@JoinColumn(name="users_id")},
+	inverseJoinColumns={@JoinColumn(name="courses_id")})
+	private List<Course> courses = new ArrayList<Course>();
 	
 	public User() {}
 	public User(String username, String password, String name, String last_name, String email) {
@@ -103,18 +114,23 @@ public class User implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public ArrayList<Course> getCourses() {
-		courses = new ArrayList<Course>();
-		for(int i = 0; i < 10; i++) {
-			Course course = new Course("course"+i);
-			course.setCFU(10);
-			courses.add(course);
-		}
+	
+	public List<Course> getCourses() {
 		return courses;
 	}
+	
 	public void setCourses(ArrayList<Course> courses) {
 		this.courses = courses;
 	}
+	
+	public void addCourse(Course course) {
+		courses.add(course);
+	}
+	
+	public void removeCourse(Course course) {
+		courses.remove(course);
+	}
+	
 	public Date getBan_until() {
 		return ban_until;
 	}
@@ -122,5 +138,9 @@ public class User implements Serializable {
 		this.ban_until = ban_until;
 	}
 	
-	
+	public static List<User> getAll(){
+		List<User> users = new ArrayList<User>();
+		users = DatabaseUtil.getInstance().getAll(User.class);
+		return users;
+	}
 }

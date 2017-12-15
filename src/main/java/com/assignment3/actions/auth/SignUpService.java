@@ -31,6 +31,6 @@ public class SignUpService {
 	public static void createNewUser(String username, String password, String name, String last_name, String email) {
 		String hashedPassword = UserHelper.getHashedPassword(password);
 		User user = new User(username, hashedPassword, name, last_name, email);
-		DatabaseUtil.getNewInstance().save(user);
+		DatabaseUtil.getInstance().save(user);
 	}
 }

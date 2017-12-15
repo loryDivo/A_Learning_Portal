@@ -18,7 +18,7 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 	private int edit_action;
 	
 	public void validate() {
-		if(isBan_forever() != null && isBan_forever() == false && getBan() != null) {
+		if(!isRemovingBan() && isBan_forever() == false) {
 			try {
 	            DateFormat df = new SimpleDateFormat(date_format);
 	            df.setLenient(false);
@@ -33,7 +33,9 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 		EditUserService service = new EditUserService(selected_user);
 		service.editBan(getBan(), isBan_forever());
 		
-		setEdit_action(WelcomeAction.ban_user_removed);
+		if(isRemovingBan()) setEdit_action(WelcomeAction.ban_user_removed);
+		else setEdit_action(WelcomeAction.ban_user);
+		
 		return SUCCESS;
 	}
 
@@ -62,6 +64,9 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 		this.edit_action = edit_action;
 	}
 	
+	private boolean isRemovingBan() {
+		return isBan_forever() == null && getBan() == null;
+	}
 	
 
 }

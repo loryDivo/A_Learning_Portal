@@ -24,7 +24,7 @@ public class UserHelper {
 			Integer u_id = Integer.parseInt(id);
 			//if the selected_user and the user are the same, avoid to set selected user
 			if(user.getId() != u_id) 
-				return DatabaseUtil.getNewInstance().find(User.class, u_id);
+				return DatabaseUtil.getInstance().find(User.class, u_id);
 		}
 		return null;
 	}
@@ -40,7 +40,7 @@ public class UserHelper {
 	}
 	
 	public static boolean isUniqueUsername(String username) {
-		return DatabaseUtil.getNewInstance().findByField(User.class, "username", username) == null;
+		return DatabaseUtil.getInstance().findByField(User.class, "username", username) == null;
 	}
 	public static boolean isStrongPassword(String password) {
 		return true;
@@ -49,13 +49,13 @@ public class UserHelper {
 		return true;
 	}
 	public static boolean isUniqueEmail(String email) {
-		return DatabaseUtil.getNewInstance().findByField(User.class, "email", email) == null;
+		return DatabaseUtil.getInstance().findByField(User.class, "email", email) == null;
 	}
 	
 	public static User getLoggedUser(Map<String, Object> session) {
 		Integer id = (Integer)session.get("userId");
 		if(id != null) 
-			return DatabaseUtil.getNewInstance().find(User.class, id);
+			return DatabaseUtil.getInstance().find(User.class, id);
 		
 		return null;
 	}

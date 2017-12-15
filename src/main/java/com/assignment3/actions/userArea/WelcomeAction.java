@@ -18,7 +18,7 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	private static final String edit_password_message = "Password edited correctly";
 	public static final int ban_user = 3;
 	private static final String ban_user_message = "User banned correctly";
-	public static final int ban_user_removed = 3;
+	public static final int ban_user_removed = 4;
 	private static final String ban_user_removed_message = "Ban removed";
 
 	private String edit;
@@ -30,7 +30,8 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 		String message = getMessageFromEdit();
 		if(message != null) addActionMessage(message);
 		
-		setUsers(DatabaseUtil.getNewInstance().getAll(User.class));
+		setUsers(DatabaseUtil.getInstance().getAll(User.class));
+
 		//setCourses(DatabaseUtil.getNewInstance().getAll(Course.class));
 		return SUCCESS;
 	}
