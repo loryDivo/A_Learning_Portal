@@ -8,9 +8,9 @@
     		<div class="row">
     			<div class="col-md-4 col-md-offset-4">
 	    			<s:form action="doLogin" enctype="multipart/form-data" theme="bootstrap" label="Login">
-	                <s:textfield label="Username" name="username"/>
+	                <s:textfield key="label.login_username" name="username"/>
 	
-	                <s:password label="Password" name="password"/>
+	                <s:password key="label.login_password" name="password"/>
 	
 	                <s:submit cssClass="btn btn-primary" value="Sign in"/>
 	            </s:form>
