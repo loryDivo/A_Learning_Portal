@@ -26,7 +26,7 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 			addFieldError("password", "Password must be the same");
 			addFieldError("password_confirm", "Password must be the same");
 		}
-		else if(getPassword().equals(getOld_password())) addFieldError("old_password", "password must be different to old password");
+		else if(getPassword().equals(getOld_password())) addFieldError("password", "password must be different to old password");
 	}
 	
 	public String execute() {
