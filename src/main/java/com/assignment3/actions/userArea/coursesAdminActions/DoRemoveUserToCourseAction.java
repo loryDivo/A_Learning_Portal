@@ -1,4 +1,4 @@
-package com.assignment3.actions.userArea.courses;
+package com.assignment3.actions.userArea.coursesAdminActions;
 
 import com.assignment3.actions.BaseAction;
 import com.assignment3.actions.userArea.WelcomeAction;
@@ -18,7 +18,7 @@ public class DoRemoveUserToCourseAction extends BaseAction implements LoggedAdmi
 		CoursesService cService = new CoursesService(getSelected_user());
 		cService.removeUser(getSelected_course());
 		
-		setEdit_action(WelcomeAction.course_user_remove);
+		setWelcome_message(WelcomeAction.course_user_remove);
 		return SUCCESS;
 	}
 

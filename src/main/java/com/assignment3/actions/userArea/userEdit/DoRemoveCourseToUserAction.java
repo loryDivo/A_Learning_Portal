@@ -20,7 +20,7 @@ public class DoRemoveCourseToUserAction extends BaseAction implements LoggedIn {
 			DatabaseUtil.getInstance().save(selected_course);
 		}
 
-		setEdit_action(WelcomeAction.course_remove);
+		setWelcome_message(WelcomeAction.course_remove);
 		return SUCCESS;
 	}
 

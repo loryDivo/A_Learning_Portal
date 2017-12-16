@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    
+    <package name="editUser" extends="default">
+    		<interceptors>
+		    <interceptor name="admin" class="com.assignment3.interceptors.AdminInterceptor"/>
+		    <interceptor-stack name="adminStack">
+		    		<interceptor-ref name="admin"/>
+		        <interceptor-ref name="loginStack"/>
+		    </interceptor-stack>
+		</interceptors>
+		
+        <action name="welcome" class="com.assignment3.actions.userArea.WelcomeAction">
+            <result name="success">/JSP/userArea/welcome.jsp</result>
+        </action>
+        
+		<action name="edit-user" class="com.assignment3.actions.userArea.userEdit.EditUserAction">
+			<interceptor-ref name="adminStack"/>
+            <result name="success">/JSP/userArea/editUser.jsp</result>
+        </action>
+        <action name="doEditUser" class="com.assignment3.actions.userArea.userEdit.DoEditUserAction">
+        		<interceptor-ref name="adminStack"/>
+        		<result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="message">${welcome_message}</param>
+		        <param name="namespace">/</param>
+		    </result>
+		    <result name="input">/JSP/userArea/editUser.jsp</result>
+        </action>
+        <action name="doEditPassword" class="com.assignment3.actions.userArea.userEdit.DoEditPasswordAction">
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="message">${welcome_message}</param>
+		        <param name="namespace">/</param>
+		    </result>
+		    <result name="input">/JSP/userArea/editUser.jsp</result>
+        </action>
+        <action name="doEditBan" class="com.assignment3.actions.userArea.userEdit.DoEditBanAction">
+        		<interceptor-ref name="adminStack"/>
+            <result name="success" type="redirectAction">
+		        <param name="actionName">welcome</param>
+		        <param name="message">${welcome_message}</param>
+		        <param name="namespace">/</param>
+		    </result>
+		    <result name="input">/JSP/userArea/editUser.jsp</result>
+        </action>
+        
+    </package>
+    
+</struts>

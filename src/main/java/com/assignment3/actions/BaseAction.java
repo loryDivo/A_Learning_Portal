@@ -19,21 +19,20 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	private static final long serialVersionUID = 1L;
 	
 	protected Map<String, Object> session;
-	private int edit_action;
+	private int welcome_message;
 	//We set this variables here because for the most of the action those one will be used
 	protected User user;
 	protected String user_id;
 	protected User selected_user;
-	protected User edit_user;
 	protected boolean admin_editing = false;
 	protected String course_id;
 	protected Course selected_course;
 	
-	public int getEdit_action() {
-		return edit_action;
+	public int getWelcome_message() {
+		return welcome_message;
 	}
-	public void setEdit_action(int edit_action) {
-		this.edit_action = edit_action;
+	public void setWelcome_message(int welcome_message) {
+		this.welcome_message = welcome_message;
 	}
 	public User getUser() {
 		return user;
@@ -52,12 +51,6 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	}
 	public void setSelected_user(User selected_user) {
 		this.selected_user = selected_user;
-	}
-	public User getEdit_user() {
-		return edit_user;
-	}
-	public void setEdit_user(User edit_user) {
-		this.edit_user = edit_user;
 	}
 	public boolean isAdmin_editing() {
 		return admin_editing;
@@ -85,31 +78,21 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 		//set the session user for the next action and to be used by jsp pages
 		User logged_user = UsersHelper.getLoggedUser(session);
 		setUser(logged_user);
-		setSelectedUserById();
-		setSelectedCourseById();
+		setSelectedUserByUrlId();
+		setSelectedCourseByUrlId();
 	}
 	
-	public void setSelectedCourseById() {
+	public void setSelectedCourseByUrlId() {
 		ActionContext context = ActionContext.getContext();
 		Course selected_course = CourseHelper.getCourseFromUrlId(context);
 		setSelected_course(selected_course);
 	}
 	
-	public void setSelectedUserById() {
+	public void setSelectedUserByUrlId() {
 		//set the user passed in the url to be used during admin actions
 		UsersHelper uHelper = new UsersHelper(user);
 		ActionContext context = ActionContext.getContext();
 		User selected_user = uHelper.getUserFromUrlId(context);
 		setSelected_user(selected_user);
 	}
-	
-	public void setEditUserOnExecute() {
-		setEdit_user(user);
-		if(getSelected_user() != null) {
-			setEdit_user(selected_user);
-			setAdmin_editing(true);
-		}
-	}
-	
-	
 }

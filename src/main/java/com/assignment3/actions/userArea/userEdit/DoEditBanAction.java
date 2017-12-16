@@ -31,8 +31,8 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 		EditUserService service = new EditUserService(selected_user);
 		service.editBan(getBan(), isBan_forever());
 		
-		if(isRemovingBan()) setEdit_action(WelcomeAction.ban_user_removed);
-		else setEdit_action(WelcomeAction.ban_user);
+		if(isRemovingBan()) setWelcome_message(WelcomeAction.ban_user_removed);
+		else setWelcome_message(WelcomeAction.ban_user);
 		
 		return SUCCESS;
 	}

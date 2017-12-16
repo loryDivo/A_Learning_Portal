@@ -15,8 +15,6 @@ public class DoEditUserAction extends BaseAction implements LoggedIn {
 	private String city;
 	private String country;
 	
-	private int edit_action;
-	
 	public void validate() {
 		if(getName().isEmpty()) addFieldError("name", "Please insert a valid name");
 		if(getLast_name().isEmpty()) addFieldError("last_name", "Please insert a valid last name");
@@ -30,7 +28,7 @@ public class DoEditUserAction extends BaseAction implements LoggedIn {
 		EditUserService service = new EditUserService(edit_user);
 		service.editUser(getName(), getLast_name(), getCity(), getCountry());
 		
-		setEdit_action(WelcomeAction.edit_user);
+		setWelcome_message(WelcomeAction.edit_user);
 		return SUCCESS;
 	}
 	
@@ -63,11 +61,5 @@ public class DoEditUserAction extends BaseAction implements LoggedIn {
 	}
 	public void setCountry(String country) {
 		this.country = country;
-	}
-	public int getEdit_action() {
-		return edit_action;
-	}
-	public void setEdit_action(int edit_action) {
-		this.edit_action = edit_action;
 	}
 }

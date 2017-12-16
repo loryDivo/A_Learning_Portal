@@ -76,7 +76,7 @@
 						</a>
 					</td>
 					<td>
-						<a href="removeCourseByAdmin?course_id=${course.getId()}">
+						<a href="doRemoveCourse?course_id=${course.getId()}">
 							<button type="button" class="btn btn-danger">Remove</button>
 						</a>
 					</td>

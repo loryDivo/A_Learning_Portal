@@ -1,4 +1,4 @@
-package com.assignment3.actions.userArea.courses;
+package com.assignment3.actions.userArea.coursesAdminActions;
 
 import java.util.List;
 

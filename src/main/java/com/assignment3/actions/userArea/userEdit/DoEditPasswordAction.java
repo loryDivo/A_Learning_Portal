@@ -14,7 +14,6 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 	private String password_confirm;
 	
 	private EditUserService service;
-	private int edit_action;
 	
 	public void validate() {
 		service = new EditUserService(user);
@@ -32,7 +31,7 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 	public String execute() {
 		service.editPassword(getPassword());
 		
-		setEdit_action(WelcomeAction.edit_password);
+		setWelcome_message(WelcomeAction.edit_password);
 		
 		return SUCCESS;
 	}
@@ -54,11 +53,5 @@ public class DoEditPasswordAction extends BaseAction implements LoggedIn {
 	}
 	public void setPassword_confirm(String password_confirm) {
 		this.password_confirm = password_confirm;
-	}
-	public int getEdit_action() {
-		return edit_action;
-	}
-	public void setEdit_action(int edit_action) {
-		this.edit_action = edit_action;
 	}
 }

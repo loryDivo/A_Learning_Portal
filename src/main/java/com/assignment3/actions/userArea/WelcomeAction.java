@@ -30,7 +30,7 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	public static final int course_user_remove = 8;
 	private static final String course_user_remove_message = "User removed correctly";
 
-	private String edit;
+	private String message;
 	private List<User> users;
 	private List<Course> courses;
 	private List<Course> remaining_courses;
@@ -38,24 +38,24 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	
 	public String execute() {
 		//check if is a redirect from edit page and show the message
-		String message = getMessageFromEdit();
+		String message = getMessageString();
 		if(message != null) addActionMessage(message);
 		
 		setUsers(DatabaseUtil.getInstance().getAll(User.class));
 		setCourses(DatabaseUtil.getInstance().getAll(Course.class));
+		
 		UsersHelper uHelper = new UsersHelper(user);
 		setRemaining_courses(uHelper.getRemainingCourses(courses));
+		
 		return SUCCESS;
 	}
 	
 	public List<Course> getRemaining_courses() {
 		return remaining_courses;
 	}
-
 	public void setRemaining_courses(List<Course> remaining_courses) {
 		this.remaining_courses = remaining_courses;
 	}
-	
 	public List<User> getUsers() {
 		return users;
 	}
@@ -68,16 +68,16 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
 	}
-	public String getEdit() {
-		return edit;
+	public String getMessage() {
+		return message;
 	}
-	public void setEdit(String edit) {
-		this.edit = edit;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
-	private String getMessageFromEdit() {
+	private String getMessageString() {
 		try {
-			int eValue = Integer.parseInt(edit);
+			int eValue = Integer.parseInt(getMessage());
 			if(eValue == edit_user) return edit_user_message;
 			else if(eValue == edit_password) return edit_password_message;
 			else if(eValue == ban_user) return ban_user_message;

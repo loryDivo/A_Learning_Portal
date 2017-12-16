@@ -19,7 +19,7 @@ public class DoAddCourseToUserAction extends BaseAction implements LoggedIn {
 			DatabaseUtil.getInstance().save(selected_course);
 		}
 		
-		setEdit_action(WelcomeAction.course_add);
+		setWelcome_message(WelcomeAction.course_add);
 		return SUCCESS;
 	}
 

@@ -1,4 +1,4 @@
-package com.assignment3.actions.userArea.courses;
+package com.assignment3.actions.userArea.coursesAdminActions;
 
 import com.assignment3.actions.BaseAction;
 import com.assignment3.actions.userArea.WelcomeAction;
@@ -22,7 +22,7 @@ public class DoAddCourseAction extends BaseAction implements LoggedAdmin {
 	public String execute() {
 		CoursesService.createNewCourse(getName(), getCfu());
 		
-		setEdit_action(WelcomeAction.course_add);
+		setWelcome_message(WelcomeAction.course_add);
 		return SUCCESS;
 	}
 	

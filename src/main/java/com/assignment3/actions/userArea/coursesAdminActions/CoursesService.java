@@ -1,4 +1,4 @@
-package com.assignment3.actions.userArea.courses;
+package com.assignment3.actions.userArea.coursesAdminActions;
 
 import java.util.List;
 
@@ -23,6 +23,12 @@ public class CoursesService {
 		course.setName(name);
 		course.setCFU(Integer.parseInt(cfu));
 		DatabaseUtil.getInstance().update(course);
+	}
+	
+	public static void removeCourse(Course course) {
+		List<User> users = course.getUsers();
+		for(User user : users) user.getCourses().remove(course);
+		DatabaseUtil.getInstance().remove(course);
 	}
 	
 	public void removeUser(Course course) {

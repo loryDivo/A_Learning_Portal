@@ -11,10 +11,11 @@ public class EditUserAction extends BaseAction implements LoggedIn {
 	private String ban_until_message;
 
 	public String execute() {
-		setEditUserOnExecute();
+		if(getSelected_user() != null) setAdmin_editing(true);
+		else setSelected_user(user);
 		
-		if(edit_user.getBan_until() != null) {
-			UsersHelper uHelper = new UsersHelper(edit_user);
+		if(getSelected_user().isBanned()) {
+			UsersHelper uHelper = new UsersHelper(getSelected_user());
 			String message = uHelper.getBanMessage();
 			if(message != null) setBan_until_message("The user is banned " + message);
 		}
