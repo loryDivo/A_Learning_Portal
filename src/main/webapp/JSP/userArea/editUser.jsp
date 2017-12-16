@@ -12,19 +12,19 @@
 		        		<s:hidden name="user_id" value="%{selected_user.getId()}" />
 					<div class="row">
 		            		<div class="col-md-6">
-		            			<s:textfield label="Name" name="name" value="%{selected_user.getName()}" />
+		            			<s:textfield key="label.edit_user_name" name="name" value="%{selected_user.getName()}" />
 		            		</div>
 		            		<div class="col-md-6">
-		            			<s:textfield label="Last Name" name="last_name" value="%{selected_user.getLast_name()}" />
+		            			<s:textfield key="label.edit_user_last_name" name="last_name" value="%{selected_user.getLast_name()}" />
 		            		</div>
 		            </div>
 		                
 		            <div class="row">
 		            		<div class="col-md-6">
-		            			<s:textfield label="City" name="city" value="%{selected_user.getCity()}" />
+		            			<s:textfield key="label.edit_user_city" name="city" value="%{selected_user.getCity()}" />
 		                	</div>
 		                	<div class="col-md-6">
-		                		<s:textfield label="Country" name="country" value="%{selected_user.getCountry()}" />
+		                		<s:textfield key="label.edit_user_country" name="country" value="%{selected_user.getCountry()}" />
 		                	</div>
 		            	</div>
 		
@@ -36,9 +36,9 @@
 			    		<s:form action="doEditPassword" enctype="multipart/form-data" theme="bootstrap" label="Edit Password">
 			        		<s:hidden name="user_id" value="%{selected_user.getId()}" />
 			        		
-			        		<s:password label="Old Password" name="old_password" />
-			        		<s:password label="Password" name="password" />
-			            <s:password label="Repeat Password" name="password_confirm" />
+			        		<s:password key="label.edit_user_old_password" name="old_password" />
+			        		<s:password key="label.edit_user_password" name="password" />
+			            <s:password key="label.edit_user_password_confirm" name="password_confirm" />
 			                
 			        		<s:submit cssClass="btn btn-primary" value="Change Password" />
 					</s:form>
@@ -51,7 +51,7 @@
 					    		<s:submit cssClass="btn btn-danger" value="Remove Ban" />
 				    		</s:if>
 				    		<s:else>
-				    			<s:textfield label="Ban Until" name="ban" placeholder="dd-mm-yyyy"/>
+				    			<s:textfield key="label.edit_user_ban" name="ban" placeholder="dd-mm-yyyy"/>
 					        <s:checkbox name="ban_forever" fieldValue="true" label="Ban forever"/>
 					    		<s:submit cssClass="btn btn-primary" value="Confirm Ban" />
 				    		</s:else>

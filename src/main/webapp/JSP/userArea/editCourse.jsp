@@ -13,11 +13,11 @@
 		        		<s:hidden name="course_id" value="%{selected_course.getId()}" />
 					<div class="row">
 		            		<div class="col-md-6">
-		            			<s:textfield label="Name" name="name"
+		            			<s:textfield key="label.edit_course_name" name="name"
 								value="%{selected_course.getName()}" />
 		            		</div>
 		            		<div class="col-md-6">
-		            			<s:textfield label="CFU" name="cfu"
+		            			<s:textfield key="label.edit_course_cfu" name="cfu"
 								value="%{selected_course.getCFU()}" />
 		            		</div>
 		            </div>
