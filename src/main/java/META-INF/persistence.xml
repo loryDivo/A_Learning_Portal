@@ -7,7 +7,7 @@
 		<class>com.assignment3.models.User</class>
 		<class>com.assignment3.models.Course</class>
 		<properties>
-			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1/assignment3" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://172.30.230.13/assignment3" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="" />
