@@ -16,7 +16,7 @@
 					</div>
 					<div class="col-lg-8">
 						<p class="text-left">
-							<strong><s:property value="%{user.username}"></s:property></strong>
+							<strong><s:property value="%{user.name}" /> <s:property value="%{user.last_name}"/></strong>
 						</p>
 						<p class="text-left small"><s:property value="%{user.email}"></s:property></p>
 						<p class="text-left">
