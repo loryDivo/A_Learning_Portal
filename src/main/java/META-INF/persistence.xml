@@ -7,10 +7,10 @@
 		<class>com.assignment3.models.User</class>
 		<class>com.assignment3.models.Course</class>
 		<properties>
-			<property name="hibernate.connection.url" value="jdbc:mysql://172.30.230.13/assignment3" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://mysql:3306/assignment3" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
-			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="" />
+			<property name="hibernate.connection.username" value="username" />
+			<property name="hibernate.connection.password" value="passwordRoot" />
 			<property name="hibernate.archive.autodetection" value="class" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
