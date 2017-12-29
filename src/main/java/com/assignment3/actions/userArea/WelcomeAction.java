@@ -41,6 +41,9 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 		String message = getMessageString();
 		if(message != null) addActionMessage(message);
 		
+		//courses are needed for both admin and user page
+		setCourses(DatabaseUtil.getInstance().getAll(Course.class));
+		
 		//Data for admin's page
 		setAdminData();
 		
@@ -96,14 +99,13 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	private void setAdminData() {
 		if(getUser().isAdmin()) {
 			setUsers(DatabaseUtil.getInstance().getAll(User.class));
-			setCourses(DatabaseUtil.getInstance().getAll(Course.class));
 		}
 	}
 	
 	private void setUserData() {
 		if(!getUser().isAdmin()) {
-			UsersHelper uHelper = new UsersHelper(user);
-			setRemaining_courses(uHelper.getRemainingCourses(courses));
+			UsersHelper uHelper = new UsersHelper(getUser());
+			setRemaining_courses(uHelper.getRemainingCourses(getCourses()));
 		}
 	}
 }
