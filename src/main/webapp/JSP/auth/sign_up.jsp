@@ -6,32 +6,32 @@
 	<jsp:attribute name="title">| Sign Up</jsp:attribute>
     <jsp:body>
         <s:form action="doSignUp" enctype="multipart/form-data" theme="bootstrap" label="Sign Up">
-                <s:textfield label="Username" name="username"/>
+                <s:textfield key = "label.sign_up_username" name="username"/>
                 
                 <div class="row">
                 		<div class="col-md-6">
-                			<s:password label="Password" name="password"/>
+                			<s:password key = "label.sign_up_password" name="password"/>
                 		</div>
                 		<div class="col-md-6">
-                			<s:password label="Repeat Password" name="password_confirm"/>
+                			<s:password key = "label.sign_up_password_confirm" name="password_confirm"/>
                 		</div>
                 </div>
                 
                 <div class="row">
                 		<div class="col-md-6">
-                			<s:textfield label="Name" name="name"/>
+                			<s:textfield key = "label.sign_up_name" name="name"/>
                 		</div>
                 		<div class="col-md-6">
-                			<s:textfield label="Last Name" name="last_name"/>
+                			<s:textfield key = "label.sign_up_last_name" name="last_name"/>
                 		</div>
                 </div>
                
                <div class="row">
                 		<div class="col-md-6">
-                			<s:textfield label="Email" name="email"/>
+                			<s:textfield key = "label.sign_up_email" name="email"/>
                 		</div>
                 		<div class="col-md-6">
-                			<s:textfield label="Email" name="email_confirm"/>
+                			<s:textfield key = "label.sign_up_email_confirm" name="email_confirm"/>
                 		</div>
                 </div>
 

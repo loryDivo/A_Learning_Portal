@@ -28,7 +28,7 @@
 								<button type="button" class="btn btn-info">Manage</button>
 							</a>
 						</td>
-						<c:if test="${user.getBan_until() != null }">
+						<c:if test="${user.isBanned()}">
 							<td>
 								<a href="doEditBan?user_id=${user.getId()}">
 									<button type="button" class="btn btn-danger">Remove Ban</button>

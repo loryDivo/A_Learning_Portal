@@ -9,8 +9,8 @@
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<s:form action="doAddCourse" enctype="multipart/form-data" theme="bootstrap" label="Create course">
-	                <s:textfield label="Name" name="name" />
-					<s:textfield label="CFU" name="cfu" />
+	                <s:textfield key = "label.add_course_name" name="name" />
+					<s:textfield key = "label.add_course_cfu" name="cfu" />
 	                <s:submit cssClass="btn btn-primary" value="Add" />
             		</s:form>
 			</div>
