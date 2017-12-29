@@ -2,10 +2,10 @@ package com.assignment3.actions.auth;
 
 import java.util.Random;
 
-import com.assignment3.miscellaneous.DatabaseUtil;
-import com.assignment3.miscellaneous.Emailer;
 import com.assignment3.models.User;
 import com.assignment3.models.helpers.UsersHelper;
+import com.assignment3.utils.DatabaseUtil;
+import com.assignment3.utils.EmailUtils;
 
 public class SignUpService {
 	
@@ -13,8 +13,9 @@ public class SignUpService {
 
 	public static boolean sendEmail(User user) {
 		String aCode = generateActivationCode();
+		//[completeUrl] should be the url by which user would active his account
 		String body = "Grazie per esserti registrato. Ti chiediamo di premere sul seguente link per attivare il tuo account: [completeUrl]+" + aCode;
-		return Emailer.getInstance().send(user.getEmail(), subject, body);
+		return EmailUtils.getInstance().send(user.getEmail(), subject, body);
 	}
 	
 	private static String generateActivationCode() {

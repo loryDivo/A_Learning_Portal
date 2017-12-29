@@ -16,7 +16,7 @@ public class DoAddCourseAction extends BaseAction implements LoggedAdmin {
 		else if(!CourseHelper.isUniqueName(getName())) addFieldError("name", "Course already added");
 		
 		if(getCfu().isEmpty()) addFieldError("cfu", "Cfu required");
-		else if(!CourseHelper.isValidCfu(getCfu())) addFieldError("cfu", "Cfu must be a number");
+		else if(!CourseHelper.isValidCfu(getCfu())) addFieldError("cfu", "Cfu must be a number less than 20");
 	}
 	
 	public String execute() {

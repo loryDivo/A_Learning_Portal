@@ -3,7 +3,7 @@ package com.assignment3.actions.userArea.userEdit;
 import com.assignment3.actions.BaseAction;
 import com.assignment3.actions.userArea.WelcomeAction;
 import com.assignment3.interfaces.LoggedIn;
-import com.assignment3.miscellaneous.DatabaseUtil;
+import com.assignment3.utils.DatabaseUtil;
 
 public class DoRemoveCourseToUserAction extends BaseAction implements LoggedIn {
 

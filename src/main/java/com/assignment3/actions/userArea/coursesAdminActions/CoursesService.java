@@ -2,9 +2,9 @@ package com.assignment3.actions.userArea.coursesAdminActions;
 
 import java.util.List;
 
-import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
+import com.assignment3.utils.DatabaseUtil;
 
 public class CoursesService {
 	

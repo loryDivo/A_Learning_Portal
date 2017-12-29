@@ -3,7 +3,6 @@ package com.assignment3.actions.userArea.userEdit;
 import com.assignment3.actions.BaseAction;
 import com.assignment3.actions.userArea.WelcomeAction;
 import com.assignment3.interfaces.LoggedIn;
-import com.assignment3.models.User;
 
 public class DoEditUserAction extends BaseAction implements LoggedIn {
 
@@ -21,11 +20,10 @@ public class DoEditUserAction extends BaseAction implements LoggedIn {
 	}
 	
 	public String execute() {
-		User edit_user = user;
 		//if the selected user is not null, the admin is trying to edit a user. Otherwise, user is editing himself
-		if(getSelected_user() != null) edit_user = selected_user;
+		if(getSelected_user() == null) setSelected_user(user);
 		
-		EditUserService service = new EditUserService(edit_user);
+		EditUserService service = new EditUserService(selected_user);
 		service.editUser(getName(), getLast_name(), getCity(), getCountry());
 		
 		setWelcome_message(WelcomeAction.edit_user);

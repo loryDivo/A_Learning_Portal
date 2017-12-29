@@ -4,8 +4,8 @@ import java.util.Map;
 
 import org.apache.struts2.dispatcher.Parameter;
 
-import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.Course;
+import com.assignment3.utils.DatabaseUtil;
 import com.opensymphony.xwork2.ActionContext;
 
 public class CourseHelper {
@@ -34,7 +34,7 @@ public class CourseHelper {
 	public static boolean isValidCfu(String cfu) {
 		try {
 			int int_cfu = Integer.parseInt(cfu);
-			if(int_cfu > 0) return true;
+			if(int_cfu > 0 && int_cfu <= 20) return true;
 		} catch(Exception e) {
 			//
 		}

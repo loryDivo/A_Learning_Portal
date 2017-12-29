@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.assignment3.actions.BaseAction;
 import com.assignment3.interfaces.LoggedIn;
-import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
 import com.assignment3.models.helpers.UsersHelper;
+import com.assignment3.utils.DatabaseUtil;
 
 public class WelcomeAction extends BaseAction implements LoggedIn {
 	
@@ -37,15 +37,15 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 	
 	
 	public String execute() {
-		//check if is a redirect from edit page and show the message
+		//check if there is a message, set by redirect caller 
 		String message = getMessageString();
 		if(message != null) addActionMessage(message);
 		
-		setUsers(DatabaseUtil.getInstance().getAll(User.class));
-		setCourses(DatabaseUtil.getInstance().getAll(Course.class));
+		//Data for admin's page
+		setAdminData();
 		
-		UsersHelper uHelper = new UsersHelper(user);
-		setRemaining_courses(uHelper.getRemainingCourses(courses));
+		//Data for user's page
+		setUserData();
 		
 		return SUCCESS;
 	}
@@ -91,5 +91,19 @@ public class WelcomeAction extends BaseAction implements LoggedIn {
 		}
 		
 		return null;
+	}
+	
+	private void setAdminData() {
+		if(getUser().isAdmin()) {
+			setUsers(DatabaseUtil.getInstance().getAll(User.class));
+			setCourses(DatabaseUtil.getInstance().getAll(Course.class));
+		}
+	}
+	
+	private void setUserData() {
+		if(!getUser().isAdmin()) {
+			UsersHelper uHelper = new UsersHelper(user);
+			setRemaining_courses(uHelper.getRemainingCourses(courses));
+		}
 	}
 }

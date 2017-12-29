@@ -3,10 +3,10 @@ package com.assignment3.actions.auth;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.assignment3.actions.BaseAction;
-import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.User;
 import com.assignment3.models.helpers.PasswordHelper;
 import com.assignment3.models.helpers.UsersHelper;
+import com.assignment3.utils.DatabaseUtil;
 
 public class DoSignUpAction extends BaseAction implements SessionAware {
 	

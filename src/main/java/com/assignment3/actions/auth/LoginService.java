@@ -1,9 +1,10 @@
 package com.assignment3.actions.auth;
 
 import java.util.Map;
-import com.assignment3.miscellaneous.DatabaseUtil;
+
 import com.assignment3.models.User;
 import com.assignment3.models.helpers.UsersHelper;
+import com.assignment3.utils.DatabaseUtil;
 
 public class LoginService {
 	

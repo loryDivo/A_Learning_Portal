@@ -18,9 +18,10 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 	
 	private static final long serialVersionUID = 1L;
 	
+	//Those variables are here because they are used among the most of action
+	//Also, user is used in every view for checking if he is admin or not
 	protected Map<String, Object> session;
-	private int welcome_message;
-	//We set this variables here because for the most of the action those one will be used
+	private int welcome_message;		
 	protected User user;
 	protected String user_id;
 	protected User selected_user;
@@ -74,6 +75,10 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 		this.session = session;
 	}
 
+	/*
+	 * Call after interceptors and before action's execute() 
+	 * Set the session user, and set the edited user or course
+	 */
 	public void prepare() throws Exception {
 		//set the session user for the next action and to be used by jsp pages
 		User logged_user = UsersHelper.getLoggedUser(session);
@@ -81,15 +86,12 @@ public abstract class BaseAction extends ActionSupport implements SessionAware, 
 		setSelectedUserByUrlId();
 		setSelectedCourseByUrlId();
 	}
-	
 	public void setSelectedCourseByUrlId() {
 		ActionContext context = ActionContext.getContext();
 		Course selected_course = CourseHelper.getCourseFromUrlId(context);
 		setSelected_course(selected_course);
 	}
-	
 	public void setSelectedUserByUrlId() {
-		//set the user passed in the url to be used during admin actions
 		UsersHelper uHelper = new UsersHelper(user);
 		ActionContext context = ActionContext.getContext();
 		User selected_user = uHelper.getUserFromUrlId(context);

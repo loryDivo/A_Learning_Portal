@@ -2,7 +2,6 @@ package com.assignment3.interceptors;
 
 import java.util.Map;
 
-import com.assignment3.actions.auth.LoginAction;
 import com.assignment3.interfaces.LoggedAdmin;
 import com.assignment3.interfaces.LoggedIn;
 import com.assignment3.interfaces.NotLoggedIn;
@@ -26,21 +25,21 @@ public class LoginInterceptor extends AbstractInterceptor {
         Object action = invocation.getAction();
 
         if (userId != null) {
-        		if (action instanceof NotLoggedIn) return "welcomeRedirect";
+        		if (action instanceof NotLoggedIn) return "welcomeRedirect";		//E.g. Login case
         		else if (action instanceof LoggedAdmin) {
         			User user = UsersHelper.getLoggedUser(session);
         			if(!user.isAdmin()) return "welcomeRedirect";
         		} else return invocation.invoke();
         }
 
+        //If no log in required, keep it going
         if (!(action instanceof LoggedIn)) {
             return invocation.invoke();
         }
 
-        if (!(action instanceof LoginAction)) {
-            return "loginRedirect";
-        }
-
-        return invocation.invoke();
+        /*
+         *	If there is no user logged and the action require to be logged, redirect to login page 
+         */
+        return "loginRedirect";
     }
 }

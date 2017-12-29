@@ -5,9 +5,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.User;
 import com.assignment3.models.helpers.UsersHelper;
+import com.assignment3.utils.DatabaseUtil;
 
 public class EditUserService {
 	
@@ -34,7 +34,7 @@ public class EditUserService {
 		DatabaseUtil.getInstance().update(user);
 	}
 	
-	public boolean oldPasswordCorrect(String password) {
+	public boolean isOldPasswordCorrect(String password) {
 		UsersHelper uHelper = new UsersHelper(user);
 		return uHelper.checkPassword(password);
 	}
@@ -43,17 +43,22 @@ public class EditUserService {
 		String format = DoEditBanAction.date_format;
 		String dateToParse = ban;
 		Date banUntil = null;
+		
+		//Change format if is a forever ban
 		if(ban_forever != null && ban_forever == true) {
 			format = ban_forever_date_format;
 			dateToParse = ban_forever_date;
 		}
 		
+		DateFormat formatter = new SimpleDateFormat(format);
+		//Try to parse the date using the format previously set
 		try {
-			DateFormat formatter = new SimpleDateFormat(format);
 			banUntil = formatter.parse(dateToParse);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//Mandatory try/catch for parsing the date. Will be always true because date's format is checked during validation
+			
 		}
+		
 		user.setBan_until(banUntil);
 		DatabaseUtil.getInstance().update(user);
 	}

@@ -1,4 +1,4 @@
-package com.assignment3.miscellaneous;
+package com.assignment3.utils;
 
 import java.util.Properties;
 
@@ -9,7 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class Emailer {
+public class EmailUtils {
 	
 	private static final String from = "6f299b316f2297";
 	private static final String password = "21a2330321afa3";
@@ -25,11 +25,11 @@ public class Emailer {
 	    properties.put("mail.smtp.port", "25");
 	}
 	
-	public static Emailer instance;
+	public static EmailUtils instance;
 	
-	public static Emailer getInstance() {
+	public static EmailUtils getInstance() {
 		if(instance == null) {
-			instance = new Emailer();
+			instance = new EmailUtils();
 		}
 		
 		return instance;

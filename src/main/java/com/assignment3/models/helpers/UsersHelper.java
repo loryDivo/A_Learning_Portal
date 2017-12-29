@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
 import org.apache.struts2.dispatcher.Parameter;
 
 import com.assignment3.actions.userArea.userEdit.EditUserService;
-import com.assignment3.miscellaneous.DatabaseUtil;
 import com.assignment3.models.Course;
 import com.assignment3.models.User;
+import com.assignment3.utils.DatabaseUtil;
 import com.opensymphony.xwork2.ActionContext;
 
 public class UsersHelper {

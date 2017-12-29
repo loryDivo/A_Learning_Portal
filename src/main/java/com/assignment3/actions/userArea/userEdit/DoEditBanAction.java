@@ -22,7 +22,7 @@ public class DoEditBanAction extends BaseAction implements LoggedIn {
 	            df.setLenient(false);
 	            df.parse(ban);
 	        } catch (ParseException e) {
-	            addFieldError("ban", "The date must be dd-mm-yyyy");
+	            addFieldError("ban", "The date must be " + date_format);
 	        }
 		}
 	}

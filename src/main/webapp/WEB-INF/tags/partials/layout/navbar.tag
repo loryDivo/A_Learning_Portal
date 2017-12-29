@@ -8,7 +8,7 @@
 	<nav class="navbar">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index">Assignment 3</a>
+				<a class="navbar-brand" href="index">A-Learning</a>
 			</div>
 			<s:if test="%{user != null}">
 				<ul class="nav navbar-nav">
