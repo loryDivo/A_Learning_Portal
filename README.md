@@ -38,7 +38,7 @@ password: 123123123A
 
 A-learning richiede l'installazione di [Eclipse](http://www.eclipse.org/downloads/eclipse-packages), [MySql](https://www.mysql.com/it/) e [Tomcat](https://tomcat.apache.org/download-80.cgi).
 
-Importare il progetto in eclipse:
+Importare il progetto in Eclipse:
 
 ```sh
 Dal programma Eclipse 
@@ -56,7 +56,7 @@ Impostare TomCat
 
 ```sh
 Dal programma Eclipse
--> Dal menu di eclipse in basso selezionare la sezione "Servers"
+-> Dal menu di Eclipse in basso selezionare la sezione "Servers"
 -> Click col destro e selezionare "New" e selezionare "Server"
 -> Selezionare "Apache TomCat v8.5" e selezionare directory di "Apache TomCat v8.5" scaricata
 ```
