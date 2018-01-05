@@ -7,6 +7,7 @@
 <html>
   <head>
   	<title>Assignment 3 <jsp:invoke fragment="title"></jsp:invoke></title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <sb:head/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/app.css" />
