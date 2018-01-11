@@ -17,7 +17,7 @@ L'utente amministratore potrà:
 
 A-learning utilizza diverse tecnologie per funzionare:
 * [Eclipse](http://www.eclipse.org) v4.7.1a
-* [Tomcat](https://tomcat.apache.org/download-90.cgi) v9.0
+* [Tomcat](https://tomcat.apache.org/download-80.cgi) v*.*
 * [MySql](https://www.mysql.com/it/) v5.7.20
 * [Hibernate](http://hibernate.org)
 
@@ -49,7 +49,7 @@ Click col destro nel progetto importato
 -> Selezionare la voce "Properties"
 -> Selezionare la sezione "Project Facets"
 -> Nella sezione destra selezionare "Runtimes"
--> Selezionare successivamente "Apache TomCat v8.5"
+-> Selezionare successivamente "Apache TomCat v *.*"
 ```
 
 Impostare TomCat
@@ -58,7 +58,7 @@ Impostare TomCat
 Dal programma Eclipse
 -> Dal menu di Eclipse in basso selezionare la sezione "Servers"
 -> Click col destro e selezionare "New" e selezionare "Server"
--> Selezionare "Apache TomCat v8.5" e selezionare directory di "Apache TomCat v8.5" scaricata
+-> Selezionare "Apache TomCat v *.*" e selezionare directory di "Apache TomCat v *.*" scaricata
 ```
 
 Creare un database nominato `assignment3`
