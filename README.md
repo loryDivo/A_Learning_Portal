@@ -9,9 +9,9 @@ A-leaerning is the portal for university students through which it is possible t
 ### Administration tools
 
 The administrator user can:
-   - Create new courses by assigning the corresponding credits
-   - Banning users for up to a certain date, or banning them forever
-   - Remove a user's ban and then allow access
+- Create new courses by assigning the corresponding credits
+- Banning users for up to a certain date, or banning them forever
+- Remove a user's ban and then allow access
 
 ### Technology adopted
 
