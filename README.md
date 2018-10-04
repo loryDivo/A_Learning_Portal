@@ -1,71 +1,71 @@
 # A-Learning
 
-A-leaerning è il portale per gli studenti universitari attraverso il quale è possible iscriversi ai corsi frequentati ed utilizzare il materiale pubblicato. 
-Il portale è molto semplice:
-  - Effettua la registrazione
-  - Accedi al tuo account
-  - Iscriviti ai corsi disponibili
+A-leaerning is the portal for university students through which it is possible to register for the courses attended and use the published material. The portal is very simple:
 
-### Strumenti amministratore
+- Register
+- Log in to your account
+- Sign up for the courses available
 
-L'utente amministratore potrà:
-  - Creare nuovi corsi assegnando i CFU corrispondendti
-  - Bannare gli utenti per fino ad una determinata data, oppure bannarli per sempre
-  - Togliere il ban di un utente e permettere quindi l'accesso
+### Administration tools
 
-### Tecnologie utilizzate
+The administrator user can:
+   - Create new courses by assigning the corresponding credits
+   - Banning users for up to a certain date, or banning them forever
+   - Remove a user's ban and then allow access
 
-A-learning utilizza diverse tecnologie per funzionare:
+### Technology adopted
+
+A-learning uses different technologies to work:
 * [Eclipse](http://www.eclipse.org) v4.7.1a
 * [Tomcat](https://tomcat.apache.org/download-80.cgi) v*.*
 * [MySql](https://www.mysql.com/it/) v5.7.20
 * [Hibernate](http://hibernate.org)
 
-### Utilizzo
-A-learning può essere utilizzato visitando il sito di [A-learning](http://a-learning-a-learning.1d35.starter-us-east-1.openshiftapps.com/Assignment3).
-Sono presenti i seguenti utenti di test:
+### Utilization
+A-learning can be used by visiting the site of [A-learning](http://a-learning-a-learning.1d35.starter-us-east-1.openshiftapps.com/Assignment3).
+The following test users are present:
 
-##### Utente Normale:
+##### Normal User:
 username: user
 
 password: 123123123A
 
-##### Utente Amministratore:
+##### Admin User:
 username: admin
 
 password: 123123123A
 
 
-### Installazione
+### Installation
 
-A-learning richiede l'installazione di [Eclipse](http://www.eclipse.org/downloads/eclipse-packages), [MySql](https://www.mysql.com/it/) e [Tomcat](https://tomcat.apache.org/download-80.cgi).
+A-learning requires the installation of [Eclipse](http://www.eclipse.org/downloads/eclipse-packages), [MySql](https://www.mysql.com/it/) e [Tomcat](https://tomcat.apache.org/download-80.cgi).
 
-Importare il progetto in Eclipse:
-
-```sh
-Dal programma Eclipse 
--> Selezionare "import"
--> Selezionare "Existing Maven Project"
-Automaticamente verrà identificato il pom.xml contenente le dipendenze
-Click col destro nel progetto importato
--> Selezionare la voce "Properties"
--> Selezionare la sezione "Project Facets"
--> Nella sezione destra selezionare "Runtimes"
--> Selezionare successivamente "Apache TomCat v *.*"
-```
-
-Impostare TomCat
+Import the project into Eclipse::
 
 ```sh
-Dal programma Eclipse
--> Dal menu di Eclipse in basso selezionare la sezione "Servers"
--> Click col destro e selezionare "New" e selezionare "Server"
--> Selezionare "Apache TomCat v *.*" e selezionare directory di "Apache TomCat v *.*" scaricata
+From the Eclipse program
+-> Select "import"
+-> Select "Existing Maven Project"
+The pom.xml containing the dependencies will be identified automatically
+Right click on the imported project
+-> Select the "Properties" item
+-> Select the "Project Facets" section
+-> In the right section select "Runtimes"
+-> Then select "Apache TomCat v *. *"
 ```
 
-Creare un database nominato `assignment3`
+Set-up Tomcat:
 
-Modificare il file /src/main/resources/META-INF/persistence.xml come segue, prestando attenzione ai campi username e password:
+```sh
+From the Eclipse program
+-> From the Eclipse menu at the bottom select the "Servers" section
+-> Right click and select "New" and select "Server"
+-> Select "Apache TomCat v *. *" And select directory of "Apache TomCat v *. *" Downloaded
+```
+
+Create a database named `assignment3'
+
+Modify file /src/main/resources/META-INF/persistence.xml as follows, paying attention to the username and password fields:
 ```sh
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="1.0"
@@ -95,6 +95,6 @@ Modificare il file /src/main/resources/META-INF/persistence.xml come segue, pres
 </persistence>
 ```
 
-Eseguire con Tomcat l'applicazione
+Execute with TomCat
 
-**Il sito utilizzato è soltanto una prova e non verrà usato in fase di produzione**
+** The site used is only a trial and will not be used during production **
